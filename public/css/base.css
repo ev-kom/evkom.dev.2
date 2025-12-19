@@ -1,3 +1,5 @@
+@import url('variables.css');
+
 * {
   margin: 0;
   padding: 0;
@@ -9,18 +11,99 @@ html {
 }
 
 body {
-  font-family: 'Space Mono', monospace;
-  background-color: #ffffff;
-  color: #333333;
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
 }
 
+/* Flex Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Icon Utilities */
+.icon-sm {
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}
+
+.icon-md {
+  width: var(--icon-md);
+  height: var(--icon-md);
+}
+
+.pixel-art {
+  image-rendering: pixelated;
+}
+
+/* GIF Utilities */
+.inline-gif {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.gif-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Link Utilities */
+.link-navy {
+  color: var(--color-navy);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.link-navy:hover {
+  text-decoration: underline;
+}
+
+/* Heading Utilities */
+.heading-navy {
+  color: var(--color-navy);
+  font-weight: bold;
+}
+
+/* Form Input Utilities (Windows-style) */
+.win-input {
+  padding: var(--space-xs) var(--space-sm);
+  font-family: var(--font-family);
+  border: var(--border-width) solid var(--color-input-border);
+  background-color: var(--color-bg);
+  color: var(--color-border);
+}
+
 /* Mobile responsive base */
 @media (max-width: 767px) {
   html {
-    font-size: 14px;
+    font-size: var(--text-sm);
+  }
+
+  .inline-gif {
+    width: var(--gif-width-mobile);
+    height: auto;
+  }
+
+  .gif-stack {
+    gap: var(--space-sm);
+    width: var(--gif-width-mobile);
   }
 }

@@ -1,13 +1,13 @@
 header {
-  border-bottom: 1px solid #000000;
+  border-bottom: var(--border-width) solid var(--color-border);
   width: 100%;
   position: relative;
   background-image:
     linear-gradient(
       to right,
-      #ffffff 0%,
-      #ffffff 264px,
-      rgba(255, 255, 255, 0) 100%
+      var(--color-bg) 0%,
+      var(--color-bg) var(--sidebar-width),
+      var(--color-bg-transparent) 100%
     ),
     url('../sky_tile.gif');
   background-repeat: no-repeat, repeat;
@@ -17,21 +17,21 @@ header {
 }
 
 header h1 {
-  font-size: 32px;
-  color: #000080;
-  padding: 0 20px;
+  font-size: var(--text-2xl);
+  color: var(--color-navy);
+  padding: 0 var(--space-lg);
 }
 
 .header-title-container {
-  border-left: 1px solid #000000;
+  border-left: var(--border-width) solid var(--color-border);
   width: 100%;
 }
 
 .header-nav-bar {
-  background-color: #ffffff;
+  background-color: var(--color-bg);
   width: 100%;
-  padding: 5px 0;
-  border: 1px solid #000000;
+  padding: var(--space-xs) 0;
+  border: var(--border-width) solid var(--color-border);
   border-bottom: none;
   display: flex;
   justify-content: flex-start;
@@ -40,20 +40,20 @@ header h1 {
 .header-nav-bar nav ul {
   list-style: none;
   display: flex;
-  border-right: 1px solid #006400;
 }
 
-.header-nav-bar nav ul li:not(:last-child) {
-  border-right: 1px solid #006400;
-  margin-right: 5px;
+.header-nav-bar nav ul li {
+  border-left: var(--border-width) solid var(--color-nav-divider);
+  border-right: var(--border-width) solid var(--color-nav-divider);
+  margin-right: calc(-1 * var(--border-width));
 }
 
 .header-nav-bar nav ul li a {
-  color: #000080;
+  color: var(--color-navy);
   text-decoration: none;
   font-weight: bold;
-  padding: 2px 20px;
-  font-size: 20px;
+  padding: var(--space-xxs) var(--space-lg);
+  font-size: var(--text-xl);
 }
 
 .header-nav-bar nav ul li a:hover {
@@ -64,13 +64,17 @@ header h1 {
 @media (max-width: 767px) {
   header {
     background-image:
-      linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+      linear-gradient(
+        to right,
+        var(--color-bg) 0%,
+        var(--color-bg-transparent) 100%
+      ),
       url('../sky_tile.gif');
   }
 
   header h1 {
-    font-size: 24px;
-    padding: 10px 16px;
+    font-size: var(--text-2xl);
+    padding: var(--space-base) var(--space-md);
   }
 
   .header-title-container {
@@ -78,21 +82,25 @@ header h1 {
   }
 
   .header-nav-bar {
-    padding: 8px;
+    padding: var(--space-sm);
+    border-left: none;
+    border-right: none;
+    justify-content: center;
   }
 
   .header-nav-bar nav ul {
     flex-wrap: wrap;
-    row-gap: 4px;
+    row-gap: var(--space-xs);
     border-right: none;
+    justify-content: center;
   }
 
-  .header-nav-bar nav ul li:last-child {
-    border-right: 1px solid #006400;
+  .header-nav-bar nav ul li {
+    margin-bottom: var(--space-xs);
   }
 
   .header-nav-bar nav ul li a {
-    padding: 4px 12px;
-    font-size: 16px;
+    padding: var(--space-xs) var(--space-base);
+    font-size: var(--text-base);
   }
 }

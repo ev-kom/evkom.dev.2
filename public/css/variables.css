@@ -1,0 +1,87 @@
+/* Design Tokens - CSS Custom Properties */
+:root {
+  /* Spacing Scale (2, 4, 8, 12, 16, 24, 32, 48) */
+  --space-xxs: 2px; /* minimal spacing, borders */
+  --space-xs: 4px; /* tight gaps */
+  --space-sm: 8px; /* small margins */
+  --space-base: 12px; /* base spacing */
+  --space-md: 16px; /* default */
+  --space-lg: 24px; /* section spacing */
+  --space-xl: 32px; /* large separations */
+  --space-2xl: 48px; /* extra large */
+
+  /* Colors - Primary */
+  --color-navy: #000080;
+  --color-text: #333333;
+  --color-text-dark: #222222;
+  --color-text-secondary: #444444;
+  --color-text-tertiary: #555555;
+  --color-muted: #666666;
+  --color-muted-dark: #777777;
+  --color-muted-light: #888888;
+  --color-muted-lighter: #999999;
+  --color-border: #000000;
+  --color-border-light: #d8d8d8;
+  --color-border-lighter: #ccc;
+  --color-bg: #ffffff;
+  --color-bg-light: #f0f0f0;
+  --color-bg-sidebar: #d8d8d8;
+  --color-bg-transparent: rgba(255, 255, 255, 0);
+
+  /* Colors - Windows UI */
+  --color-win-gray: #c0c0c0;
+  --color-win-shadow: #555;
+  --color-win-highlight: #dfdfdf;
+  --color-win-outline: #888;
+  --color-win-teal: #008080;
+  --color-win-blue-light: #1084d0;
+  --color-input-border: #7f9db9;
+  --color-nav-divider: #006400;
+
+  /* Typography - Font */
+  --font-family: 'Space Mono', monospace;
+
+  /* Typography - Sizes */
+  --text-xxs: 0.625rem; /* 10px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-sm: 0.875rem; /* 14px */
+  --text-base: 1rem; /* 16px */
+  --text-lg: 1.15rem; /* ~18px */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px */
+  --text-3xl: 1.8rem; /* ~29px */
+
+  /* Letter Spacing */
+  --letter-spacing-tight: -0.5px;
+  --letter-spacing-wide: 0.5px;
+
+  /* Line Heights */
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.6;
+
+  /* Border Widths */
+  --border-width: 1px;
+  --border-width-thick: 2px;
+  --border-radius-sm: 2px;
+
+  /* Icons */
+  --icon-xs: 20px;
+  --icon-sm: 24px;
+  --icon-md: 32px;
+
+  /* GIF sizing */
+  --gif-width-mobile: 4em;
+
+  /* Layout */
+  --sidebar-width: 20%;
+  --content-max-width: 800px;
+  --dialog-width: 400px;
+
+  /* Form Elements */
+  --form-label-width: 128px;
+  --form-textarea-height: 96px;
+
+  /* Breakpoints (for reference, can't use in media queries) */
+  --bp-mobile: 767px;
+}

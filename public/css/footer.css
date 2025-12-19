@@ -6,25 +6,25 @@
   content: '';
   display: block;
   margin: 0 auto;
-  margin-left: 16px;
-  margin-right: 16px;
-  padding: 2px 0;
-  border-top: 1px solid #000000;
+  margin-left: var(--space-md);
+  margin-right: var(--space-md);
+  padding: var(--space-xxs) 0;
+  border-top: var(--border-width) solid var(--color-border);
 }
 
 .main-content-footer p {
-  font-size: 16px;
-  margin-bottom: 2px;
+  font-size: var(--text-base);
+  margin-bottom: var(--space-xxs);
 }
 
 /* Mobile footer */
 @media (max-width: 767px) {
   .main-content-footer::before {
-    margin-left: 8px;
-    margin-right: 8px;
+    margin-left: var(--space-sm);
+    margin-right: var(--space-sm);
   }
 
   .main-content-footer p {
-    font-size: 14px;
+    font-size: var(--text-sm);
   }
 }

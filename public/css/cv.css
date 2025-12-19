@@ -2,51 +2,50 @@
 
 .cv-container {
   text-align: left;
-  padding: 20px;
-  font-family: 'Space Mono', monospace; /* Ensure font consistency */
-  max-width: 800px; /* Limit width for better readability */
+  padding: var(--space-lg);
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
 .cv-header {
-  border-bottom: 1px solid #ccc; /* Lighter border */
-  margin-bottom: 32px;
-  padding-bottom: 15px;
+  border-bottom: var(--border-width) solid var(--color-border-lighter);
+  margin-bottom: var(--space-xl);
+  padding-bottom: var(--space-md);
 }
 
 .cv-header h2 {
-  font-size: 1.8rem;
-  margin-bottom: 5px;
-  letter-spacing: -0.5px;
+  font-size: var(--text-3xl);
+  margin-bottom: var(--space-xs);
+  letter-spacing: var(--letter-spacing-tight);
 }
 
 .cv-header p {
   color: #555;
-  font-size: 0.95rem;
+  font-size: var(--text-sm);
 }
 
 .cv-intro {
-  font-size: 1.05rem;
-  margin-bottom: 40px;
-  line-height: 1.6;
+  font-size: var(--text-base);
+  margin-bottom: var(--space-xl);
+  line-height: var(--line-height-relaxed);
   color: #222;
 }
 
 /* Common Section Headers */
 .section-title {
-  font-size: 1.2rem;
+  font-size: var(--text-lg);
   font-weight: bold;
   text-transform: uppercase;
-  border-bottom: 2px solid #000;
+  border-bottom: var(--border-width-thick) solid var(--color-border);
   display: inline-block;
-  margin-bottom: 25px;
-  padding-bottom: 2px;
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-xxs);
 }
 
 /* Experience Items */
 .experience-item {
-  margin-bottom: 40px;
-  position: relative; /* For connector lines if we want them later */
+  margin-bottom: var(--space-xl);
+  position: relative;
 }
 
 .job-header {
@@ -54,13 +53,13 @@
   justify-content: space-between;
   align-items: baseline;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: var(--space-sm);
 }
 
 .job-title {
   font-weight: bold;
-  font-size: 1.15rem;
-  color: #000;
+  font-size: var(--text-lg);
+  color: var(--color-border);
 }
 
 .job-company {
@@ -75,12 +74,12 @@
 }
 
 .job-company a:hover {
-  color: #000;
+  color: var(--color-border);
   text-decoration-style: solid;
 }
 
 .job-date {
-  font-size: 0.9rem;
+  font-size: var(--text-sm);
   color: #777;
   white-space: nowrap;
 }
@@ -88,30 +87,30 @@
 .job-location {
   font-size: 0.85rem;
   color: #888;
-  margin-bottom: 8px;
+  margin-bottom: var(--space-sm);
   display: block;
 }
 
 .job-description {
-  font-size: 0.95rem;
-  color: #333;
-  line-height: 1.5;
-  margin-bottom: 16px;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+  margin-bottom: var(--space-md);
 }
 
 .job-description ul {
-  list-style-type: none; /* Cleaner look */
+  list-style-type: none;
   padding-left: 0;
 }
 
 .job-description li {
-  margin-bottom: 8px;
-  padding-left: 15px;
+  margin-bottom: var(--space-sm);
+  padding-left: var(--space-md);
   position: relative;
 }
 
 .job-description li::before {
-  content: '•'; /* Custom bullet */
+  content: '•';
   position: absolute;
   left: 0;
   color: #999;
@@ -121,39 +120,39 @@
 .job-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 10px;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
 }
 
 .job-tag {
-  font-size: 0.75rem;
-  background-color: #eee;
+  font-size: var(--text-xs);
+  background-color: var(--color-bg-light);
   color: #444;
-  padding: 2px 8px;
-  border-radius: 2px;
-  border: 1px solid #ddd;
+  padding: var(--space-xxs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  border: var(--border-width) solid var(--color-border-light);
 }
 
 /* Mobile CV */
 @media (max-width: 767px) {
   .cv-container {
-    padding: 16px;
+    padding: var(--space-md);
   }
 
   .cv-header h2 {
-    font-size: 1.5rem;
+    font-size: var(--text-2xl);
   }
 
   .job-header {
     flex-direction: column;
-    gap: 4px;
+    gap: var(--space-xs);
   }
 
   .job-title {
-    font-size: 1rem;
+    font-size: var(--text-base);
   }
 
   .section-title {
-    font-size: 1.1rem;
+    font-size: var(--text-lg);
   }
 }
