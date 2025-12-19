@@ -6,6 +6,12 @@ The project structure is organized into `pages/` for content logic and templates
 
 The visual theme is inspired by early graphical user interfaces, using the font "Space Mono" for all text, along with blocky borders, and an adjusted color palette with lighter grays for the sidebars. The layout is implemented using CSS Grid.
 
+## Project Philosophy
+
+This project explicitly avoids modern frontend frameworks (React, Vue, etc.) to maintain a lightweight, fast, and "close to the metal" codebase. The goal is to write high-quality, maintainable, and modern "Vanilla JS" and CSS, proving that you can build complex, interactive experiences without heavy client-side bundles. Dependencies are strictly minimized and only used when they offer significant value, ensuring the site remains extremely lightweight.
+
+Yes, we reinvented the wheel by writing a custom static site generator and server from scratch using Node.js, Express, and EJS. But sometimes, reinventing the wheel is the best way to understand how it rolls—and it's a lot more fun than configuring Webpack for the 500th time.
+
 ## Building and Running
 
 This is a static website generated via Node.js.
@@ -64,7 +70,7 @@ The site uses an enhanced **two-phase rendering pipeline**:
 
 1.  **Static Phase** (`backend/static-renderer.js`): Processes standard EJS templates (`<% %>`) during `npm run build`. This generates the static HTML files in `dist/`.
 2.  **Dynamic Phase** (`backend/dynamic-renderer.js`): Re-processes the HTML at runtime (in Development) or on request (in Production) to inject session-specific content.
-    - **Logic Loading**: Uses a `PAGE_HANDLERS` registry in `backend/dynamic-renderer.js` to map pages to their logic.
+    - **Logic Loading**: Uses a manual `PAGE_HANDLERS` registry in `backend/dynamic-renderer.js` to explicitly map pages to their server-side logic modules. This avoids dynamic imports and filesystem scanning for better predictability and simpler bundling.
     - **Delimiters**: Uses standard EJS tags (`<%- %>`) for runtime logic.
     - **Helpers**: Injects a `dynamic(key)` helper to render async components defined in handlers.
 
@@ -72,7 +78,8 @@ The site uses an enhanced **two-phase rendering pipeline**:
 
 - **Stateless Gating**: Protection for sensitive pages (like Guestbook) is implemented without cookies or sessions. The server verifies a Cloudflare Turnstile token on every request for gated pages.
 - **Full API Protection**: All endpoints under `/api` require a valid Turnstile token.
-- **Input Sanitization**: Guestbook entries are sanitized using `validator` (trim/escape) before storage in Google Sheets and unescaped carefully on read.
+- **Input Sanitization**: Guestbook entries are sanitized using `validator` (trim/escape) in `backend/google-sheets.js` before storage. Entries are carefully unescaped on read to allow safe display of content.
+- **Limits**: Guestbook enforces character limits on names (50 chars) and messages (500 chars) both on the client and server.
 - **Content Security Policy (CSP)**: Strict headers are enforced in `server.js` to allow only trusted scripts and frames.
 
 ## Key Files

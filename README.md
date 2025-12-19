@@ -4,9 +4,11 @@ Retro 2000s-style personal portfolio for Egor Komarov.
 
 ## Features
 
+- **Vanilla JS**: Built without frameworks to keep the site lightweight. External libraries are restricted to only those providing significant value.
 - **Retro Aesthetic**: 2000s-inspired UI with Space Mono, blocky borders, and CSS Grid layout.
-- **Custom SSG**: Two-phase rendering pipeline (Static EJS build + Dynamic runtime injection).
+- **Custom SSG & Server**: A bespoke build system and dev server written in pure Node.js, Express, and EJS. Features a two-phase rendering pipeline (Static Build + Dynamic Runtime). Because sometimes reinventing the wheel is just plain fun.
 - **Guestbook**: Google Sheets integration for persistent entries.
+- **Y2K Error Pages**: Themed 404 and 500 pages with interactive elements.
 - **Security**: Stateless gating with Cloudflare Turnstile token verification.
 
 ## Tech Stack
