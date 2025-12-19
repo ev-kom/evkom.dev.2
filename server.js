@@ -6,6 +6,7 @@ import { join } from 'path';
 import { processDynamicContent } from './backend/dynamic-renderer.js';
 import { appendGuestbookMessage } from './backend/google-sheets.js';
 import {
+  getError404,
   getError500,
   renderStaticPage,
   safeResolvePageName,
@@ -109,6 +110,11 @@ if (IS_DEV) {
   // PROD MODE: Serve form dist (processed assets)
   app.use(express.static(DIST_DIR));
 }
+
+// 404 Catch-all Middleware
+app.use(async (req, res) => {
+  res.status(404).send(await getError404());
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
