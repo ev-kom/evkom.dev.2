@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guestbook - evkom.dev</title>
+    <link rel="stylesheet" href="css/base.css?v=fix-height-html" />
+    <link rel="stylesheet" href="css/layout.css?v=fix-height" />
+    <link rel="stylesheet" href="css/header.css?v=final" />
+    <link rel="stylesheet" href="css/sidebar.css?v=final" />
+    <link rel="stylesheet" href="css/main-content.css?v=align-fix" />
+    <link rel="stylesheet" href="css/footer.css?v=final" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/guestbook.css" />
+    <script src="js/guestbook.js" defer></script>
+  </head>
+  <body>
+    <header><%- include('/shared/header.html') %></header>
+    <div class="container">
+      <section class="left-sidebar sidebar-common">
+        <%- include('/shared/sidebar-left.html') %>
+      </section>
+      <section class="main-content">
+        <section class="main-content-body main-content-body-guestbook">
+          <div class="guestbook-header-container">
+            <img src="gifs/guestbook.gif" alt="Guestbook GIF" />
+            <h2>Guestbook</h2>
+          </div>
+          <p>Feel free to write down a comment.</p>
+
+          <%- include('/pages/guestbook/form.html') %>
+
+          <div class="past-messages-header">
+            <h3>Past messages:</h3>
+          </div>
+          <div id="messages" class="message-list">
+            <%- dynamic('guestbook_messages') %>
+          </div>
+        </section>
+        <div class="main-content-footer">
+          <%- include('/shared/footer.html') %>
+        </div>
+      </section>
+      <section class="right-sidebar sidebar-common">
+        <%- include('/shared/sidebar-right.html') %>
+      </section>
+    </div>
+  </body>
+</html>

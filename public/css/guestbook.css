@@ -1,0 +1,149 @@
+.guestbook-form {
+  padding: 8px 0;
+}
+
+.guestbook-form h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.25em;
+  color: #000080;
+  font-weight: bold;
+}
+
+.form-group {
+  margin-bottom: 16px;
+  display: flex;
+}
+
+.form-group label {
+  width: 128px;
+  flex-shrink: 0;
+  font-size: 0.95em;
+}
+
+.form-group input,
+.form-group textarea {
+  flex-grow: 1;
+  padding: 4px 8px;
+  font-family: 'Space Mono', monospace;
+  border: 1px solid #7f9db9; /* Standard Windows-like input border */
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.form-group textarea {
+  height: 96px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #f0f0f0;
+  color: #000000;
+  font-family: 'Space Mono', monospace;
+  font-weight: normal;
+  border: 1px solid #7f9db9;
+  padding: 4px 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.submit-btn:hover {
+  background-color: #e0e0e0;
+  border-color: #000080;
+}
+
+.submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  border-color: #999999;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.past-messages-header h3 {
+  color: #000080;
+  font-size: 1.1em;
+}
+
+.message-item {
+  margin: 0;
+  padding: 12px 0;
+  border-top: 1px solid #000000;
+  font-size: 0.95em;
+  width: 100%;
+  display: block;
+}
+
+.message-item:first-child {
+  border-top: none;
+}
+
+.message-header {
+  padding-bottom: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 16px;
+  color: #333333;
+}
+
+.message-name {
+  font-weight: bold;
+  color: #000080;
+}
+
+.message-icon {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+  display: block;
+}
+
+.message-meta {
+  color: #666666;
+  font-size: 0.9em;
+}
+
+.message-body {
+  white-space: pre-wrap;
+  word-break: break-word; /* Ensure wrapping of long strings */
+  padding-left: 0; /* Align with the header content */
+  color: #000000;
+  line-height: 1.5;
+  margin-top: 4px;
+  max-width: 100%;
+}
+
+.main-content-body-guestbook {
+  text-align: left;
+}
+
+.guestbook-header-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.guestbook-header-container img {
+  margin: 0;
+}
+
+.guestbook-header-container h2 {
+  margin: 0;
+}
+
+.form-group-captcha {
+  margin: 0 !important;
+}
+
+.loading-text,
+.error-text {
+  padding: 8px 0;
+  font-style: italic;
+  color: #666666;
+}

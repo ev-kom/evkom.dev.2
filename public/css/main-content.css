@@ -1,0 +1,58 @@
+.main-content-body {
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.main-content-body-img {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 16px;
+  max-width: 100%;
+}
+
+.inline-gif {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.attribution-section li {
+  display: flex;
+  align-items: center;
+}
+
+.attribution-section span {
+  padding-right: 8px;
+}
+
+.attribution-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 10px;
+}
+
+.attribution-header {
+  padding-bottom: 12px;
+}
+
+.attribution-section {
+  text-align: left;
+}
+
+.main-content-body .attribution-icon {
+  margin: 0 10px 0 0;
+  display: inline-block;
+}
+
+.resource-description {
+  font-size: 0.9em;
+  color: #666;
+  margin-left: 24px;
+  margin-top: 4px;
+}
+
+.resources-list li {
+  display: block;
+  margin-bottom: 12px;
+}

@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - evkom.dev</title>
+    <link rel="stylesheet" href="css/base.css?v=fix-height-html" />
+    <link rel="stylesheet" href="css/layout.css?v=fix-height" />
+    <link rel="stylesheet" href="css/header.css?v=final" />
+    <link rel="stylesheet" href="css/sidebar.css?v=final" />
+    <link rel="stylesheet" href="css/main-content.css?v=align-fix" />
+    <link rel="stylesheet" href="css/footer.css?v=final" />
+    <link rel="stylesheet" href="css/cv.css?v=refined" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header><%- include('/shared/header.html') %></header>
+    <div class="container">
+      <section class="left-sidebar sidebar-common">
+        <%- include('/shared/sidebar-left.html') %>
+      </section>
+      <section class="main-content">
+        <section class="main-content-body cv-container">
+          <div class="cv-header">
+            <h2>Egor Komarov</h2>
+            <p>Full Stack Software Engineer | Nuclear Physics Background</p>
+          </div>
+
+          <div class="cv-intro">
+            <p style="margin-bottom: 10px">
+              Full stack software engineer with 9+ years of experience building
+              high-load, distributed, customer-facing systems with a background
+              in nuclear physics. Experienced in designing, developing, and
+              maintaining complex systems using Java, Spring Boot, and
+              microservices (REST, Kafka).
+            </p>
+            <ul style="padding-left: 20px; list-style-type: disc">
+              <li>
+                Comfortable designing and implementing all layers of the stack
+                from database, infrastructure, and inter-system communication to
+                frontend and mobile applications in Java, Node.js, TypeScript,
+                JavaScript, React Native, CSS, HTML, and APIs.
+              </li>
+              <li>
+                Strong backend expertise while curiosity-driven, actively
+                exploring web and mobile development, building React and React
+                Native features such as push notifications for millions of
+                users.
+              </li>
+              <li>
+                Skilled at translating complex technical challenges into clear
+                solutions that bridge engineering and business needs.
+              </li>
+              <li>
+                Fluent in English and Russian, Goethe B1 German, Germany
+                permanent resident.
+              </li>
+              <li>
+                Skills: Full system design and architecture, database design and
+                development, multithreaded, distributed, and high-load systems,
+                microservices, cloud infrastructure, CI/CD, performance
+                optimization.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section-title">EXPERIENCE</div>
+
+          <!-- Klarna -->
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Software Engineer</span>
+                <span class="job-company"
+                  >@
+                  <a href="https://www.klarna.com/" target="_blank">Klarna</a>
+                </span>
+              </div>
+              <span class="job-date">Sep 2022 - Present</span>
+            </div>
+
+            <div>
+              <span class="job-location">Berlin, Germany</span>
+              <p style="margin-bottom: 20px; font-style: italic">
+                Klarna is a global payments and BNPL company. My team runs ~30
+                Spring Boot Java microservices (Kafka/REST) handling the full
+                Customer Communications lifecycle: orchestration, decisions,
+                data enrichment, generation, scheduling, delivery, callbacks,
+                and history.
+              </p>
+
+              <div class="job-description">
+                <ul>
+                  <li>
+                    <strong>SMS (Business Critical / OTP)</strong> - Providers:
+                    <a
+                      href="https://www.twilio.com/en-us/messaging/sms"
+                      target="_blank"
+                      >Twilio</a
+                    >,
+                    <a href="https://bird.com/sms" target="_blank"
+                      >MessageBird</a
+                    >
+                    <ul>
+                      <li>
+                        <strong>Dynamic SMS Provider Switching</strong>: built
+                        automated switching based on real-time conversion.
+                        <ul>
+                          <li>
+                            Improved session conversion by <strong>1%</strong>,
+                            one of Klarna’s most important metrics, generating a
+                            <strong>multi-million EUR impact</strong>.
+                          </li>
+                          <li>
+                            Reduced SMS provider failover from
+                            <strong>30 min to 1 min</strong>, reduced incidents
+                            by <strong>60%</strong>, and ensured zero downtime
+                            during Black Friday.
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>Push Notifications (Payment Notifications)</strong>
+                    - Provider:
+                    <a
+                      href="https://firebase.google.com/docs/cloud-messaging"
+                      target="_blank"
+                      >FCM</a
+                    >
+                    <ul>
+                      <li>
+                        Responsible for end-to-end push notification
+                        infrastructure.
+                      </li>
+                      <li>
+                        <strong>Delivery Eligibility Check</strong>: reduced
+                        failed deliveries by ~<strong>50%</strong> by sending
+                        pushes only to valid devices (app installed + push
+                        enabled).
+                        <ul>
+                          <li>
+                            Enabled targeted marketing campaigns and
+                            segmentation using delivery eligibility data.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <strong>Braze Migration Support</strong>: added missing
+                        features/callbacks to move push delivery from Braze to
+                        in-house platform. Integrated tracking
+                        (delivered/opened) across React Native Klarna App, iOS,
+                        Android for <strong>65M+ devices</strong>, saving
+                        hundreds of thousands EUR/month.
+                      </li>
+                      <li>
+                        <strong>Silent Push</strong>: added channel for iOS
+                        silent pushes (Android data messages) and built silent
+                        pushes handler in React Native Klarna App.
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong
+                      >Email (Business Critical / OTP / Transactional /
+                      Legal)</strong
+                    >
+                    - Providers:
+                    <a
+                      href="https://sendgrid.com/solutions/email-api"
+                      target="_blank"
+                      >SendGrid</a
+                    >,
+                    <a href="https://bird.com/email" target="_blank"
+                      >SparkPost</a
+                    >
+                    <ul>
+                      <li>
+                        <strong>Rescheduling Logic</strong>: automated delivery
+                        within legally allowed time windows globally, ensuring
+                        <strong>100% compliance</strong> in the US (<strong
+                          >1M+ messages/year</strong
+                        >).
+                      </li>
+                    </ul>
+                  </li>
+
+                  <li>
+                    <strong>Maintenance & Reliability</strong>:
+                    <ul>
+                      <li>On-call ownership of platform stability.</li>
+                      <li>
+                        <strong>Kafka Cluster Usage Optimization</strong>: cut
+                        TCP connections 99.5%, lowering costs by 20%.
+                      </li>
+                      <li>
+                        <strong>CI/CD Standardization</strong>: Developed
+                        structured Jenkins declarative pipelines, cutting deploy
+                        time by <strong>20%</strong> and improving release
+                        stability.
+                      </li>
+                      <li>
+                        <strong>Performance Testing</strong>: introduced k6 and
+                        ran spike (<strong>600 req/s</strong>), load (<strong
+                          >200 req/s</strong
+                        >), and overload tests.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">JAVA</span>
+              <span class="job-tag">KAFKA</span>
+              <span class="job-tag">SPRING BOOT</span>
+              <span class="job-tag">AWS</span>
+              <span class="job-tag">CLOUDFORMATION</span>
+              <span class="job-tag">DOCKER</span>
+              <span class="job-tag">TERRAFORM</span>
+              <span class="job-tag">DATADOG</span>
+              <span class="job-tag">JENKINS</span>
+              <span class="job-tag">GROOVY</span>
+              <span class="job-tag">K6 LOAD TEST</span>
+              <span class="job-tag">REACT NATIVE</span>
+              <span class="job-tag">NODE.JS</span>
+              <span class="job-tag">TYPESCRIPT</span>
+              <span class="job-tag">MICROSERVICES</span>
+              <span class="job-tag">FCM</span>
+              <span class="job-tag">FIREBASE</span>
+              <span class="job-tag">DATA LAKEHOUSE</span>
+              <span class="job-tag">AWS AURORA POSTGRESQL</span>
+              <span class="job-tag">POSTGRESQL</span>
+              <span class="job-tag">REDIS</span>
+              <span class="job-tag">LANGCHAIN</span>
+              <span class="job-tag">LANGGRAPH</span>
+            </div>
+          </div>
+
+          <!-- Gridfore -->
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Java Developer</span>
+                <span class="job-company"
+                  >@
+                  <a href="https://gridfore.com" target="_blank"
+                    >Gridfore</a
+                  ></span
+                >
+              </div>
+              <span class="job-date">May 2017 - Sep 2022</span>
+            </div>
+            <span class="job-location">Moscow, Russia</span>
+            <p style="margin-bottom: 10px; font-style: italic">
+              Partnering with Accenture, Gridfore provides a platform for
+              <strong>real-time big data analysis</strong> and decision making
+              for <strong>banking</strong> and <strong>fintech</strong>.
+            </p>
+            <div class="job-description">
+              <ul>
+                <li>
+                  Contributed to the development of the distributed,
+                  <strong>high-load</strong> in-memory data management engine
+                  (processing <strong>500,000 records/sec</strong>) and
+                  implemented reactive ETL modules using
+                  <strong>Akka Actor System</strong> &
+                  <strong>Akka Streams</strong>.
+                </li>
+                <li>
+                  Built the platform web interface using
+                  <strong>React JS</strong> with <strong>Redux</strong> for
+                  monitoring cluster state and designed a custom
+                  <strong>Groovy</strong>-based DSL module for user-defined
+                  logic.
+                </li>
+              </ul>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">JAVA</span>
+              <span class="job-tag">AKKA</span>
+              <span class="job-tag">SPRING BOOT</span>
+              <span class="job-tag">POSTGRESQL</span>
+              <span class="job-tag">ORACLE DB</span>
+              <span class="job-tag">KAFKA</span>
+              <span class="job-tag">REACT JS</span>
+              <span class="job-tag">REDUX</span>
+              <span class="job-tag">GROOVY</span>
+              <span class="job-tag">DOCKER</span>
+            </div>
+          </div>
+
+          <!-- Stealth Startup -->
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Lead Developer (Part-time)</span>
+                <span class="job-company">@ Stealth Startup</span>
+              </div>
+              <span class="job-date">Mar 2021 - Mar 2022</span>
+            </div>
+            <span class="job-location">Atlanta, GA, USA</span>
+            <p style="margin-bottom: 10px; font-style: italic">
+              A startup focused on changing recruitment by creating an intuitive
+              experience for candidates and companies.
+            </p>
+
+            <div class="job-description">
+              <ul>
+                <li>
+                  One of the lead developers on the project, responsible for
+                  overall system architecture, design, and development.
+                </li>
+                <li>
+                  Built core system with golang, gorm, and postgres on the
+                  backend for highly scalable and efficient resource utilization
+                  along with container-based deployment on AWS
+                </li>
+                <li>
+                  Developed frontend with React and
+                  <a href="https://mui.com/" target="_blank">Material UI</a>.
+                  (MUI) and leveraged Auth0, Stripe, and SendGrid for
+                  authentication, payment processing, and email sending,
+                  respectively
+                </li>
+              </ul>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">GOLANG</span>
+              <span class="job-tag">REACT JS</span>
+              <span class="job-tag">AWS</span>
+              <span class="job-tag">DOCKER</span>
+              <span class="job-tag">POSTGRES</span>
+            </div>
+          </div>
+
+          <!-- AT Consulting -->
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Oracle CRM Developer</span>
+                <span class="job-company"
+                  >@
+                  <a href="https://www.at-consulting.ru/" target="_blank"
+                    >AT Consulting</a
+                  ></span
+                >
+              </div>
+              <span class="job-date">Aug 2016 - May 2017</span>
+            </div>
+            <p style="margin-bottom: 10px; font-style: italic">
+              AT Consulting provides custom software solutions and consulting
+              expertise.
+            </p>
+            <div class="job-description">
+              <ul>
+                <li>
+                  Developed and maintained the Oracle-based CRM system for the
+                  Banking Services.
+                </li>
+              </ul>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">JAVASCRIPT</span>
+              <span class="job-tag">PL/SQL</span>
+              <span class="job-tag">ORACLE DB</span>
+              <span class="job-tag">ORACLE CRM</span>
+            </div>
+          </div>
+
+          <!-- VNIIAES -->
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Engineer</span>
+                <span class="job-company"
+                  >@
+                  <a href="https://vniiaes.ru/en/" target="_blank"
+                    >VNIIAES</a
+                  ></span
+                >
+              </div>
+              <span class="job-date">Jul 2014 - Dec 2015</span>
+            </div>
+            <p style="margin-bottom: 10px; font-style: italic">
+              Research Institute for Nuclear Power Plants Operation.
+            </p>
+            <div class="job-description">
+              <ul>
+                <li>
+                  Simulated nuclear reactor core parameters using GPU computing
+                  (CUDA / Monte-Carlo methods).
+                </li>
+                <li>
+                  Developed visualization software for scientific data
+                  comparison.
+                </li>
+              </ul>
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">C#</span>
+              <span class="job-tag">CUDA</span>
+              <span class="job-tag">GPU COMPUTING</span>
+              <span class="job-tag">MONTE CARLO MODELING</span>
+            </div>
+          </div>
+
+          <div class="section-title">EDUCATION</div>
+
+          <div class="experience-item">
+            <div class="job-header">
+              <div>
+                <span class="job-title">Nuclear Physics and Technologies</span>
+              </div>
+              <span class="job-date">2010 - 2016</span>
+            </div>
+            <div class="job-company">
+              <a href="https://eng.mephi.ru/institutes/inphe" target="_blank"
+                >National Research Nuclear University MEPhI</a
+              >
+            </div>
+            <div class="job-description" style="margin-top: 5px">
+              Masters Degree. Grade: 4.8/5.0
+            </div>
+            <div class="job-tags">
+              <span class="job-tag">C#</span>
+              <span class="job-tag">CUDA</span>
+              <span class="job-tag">MATLAB</span>
+              <span class="job-tag">PYTHON</span>
+              <span class="job-tag">FORTRAN</span>
+              <span class="job-tag">PASCAL</span>
+              <span class="job-tag">GPU COMPUTING</span>
+              <span class="job-tag">STATISTICS</span>
+              <span class="job-tag">CALCULUS</span>
+              <span class="job-tag">LINEAR ALGEBRA</span>
+              <span class="job-tag">COMPUTATIONAL PHYSICS</span>
+            </div>
+          </div>
+        </section>
+        <div class="main-content-footer">
+          <%- include('/shared/footer.html') %>
+        </div>
+      </section>
+      <section class="right-sidebar sidebar-common">
+        <%- include('/shared/sidebar-right.html') %>
+      </section>
+    </div>
+  </body>
+</html>

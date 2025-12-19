@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>evkom.dev - Manifest</title>
+    <link rel="stylesheet" href="css/base.css?v=fix-height-html" />
+    <link rel="stylesheet" href="css/layout.css?v=fix-height" />
+    <link rel="stylesheet" href="css/header.css?v=final" />
+    <link rel="stylesheet" href="css/sidebar.css?v=final" />
+    <link rel="stylesheet" href="css/main-content.css?v=align-fix" />
+    <link rel="stylesheet" href="css/footer.css?v=final" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header><%- include('/shared/header.html') %></header>
+    <div class="container">
+      <section
+        class="left-sidebar sidebar-common"
+      >
+        <%- include('/shared/sidebar-left.html') %>
+      </section>
+      <section class="main-content">
+        <section class="main-content-body">
+          <h2 class="attribution-header">Manifest</h2>
+          <div class="attribution-section">
+            <ul>
+            </ul>
+          </div>
+
+          <h3 class="attribution-header">Site Map</h3>
+          <div class="attribution-section">
+              <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><span>├──</span> <a href="cv.html">CV</a></li>
+                <li><span>├──</span> <a href="<%= linkedin %>" target="_blank">Linkedin</a></li>
+                <li><span>├──</span> <a href="<%= github %>" target="_blank">Github</a></li>
+                <li><span>├──</span> <a href="guestbook.html">Guestbook</a></li>
+                <li><span>└──</span> <a href="manifest.html">Manifest</a></li>
+              </ul>
+          </div>
+
+          <h3 class="attribution-header">Resources</h3>
+          <div class="attribution-section">
+            <ul class="resources-list">
+              <li><span>─</span>
+                <img
+                  src="/sky_tile.gif"
+                  alt="Asset icon"
+                  class="attribution-icon"
+                />
+                Background&nbsp;
+                <a
+                  href="<%= clouds_wallpaper %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="sidebar-link"
+                  >by WindowsAesthetics</a
+                >
+                &nbsp;/&nbsp;
+                <a
+                  href="<%= cc_by_sa %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="sidebar-link"
+                  >CC BY-SA 4.0</a
+                >
+                <div class="resource-description">Used for the tiling sky background.</div>
+              </li>
+              <li><span>─</span>
+                <a
+                  href="<%= cyber_dabamos %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="sidebar-link"
+                  >cyber.dabamos.de</a
+                >
+                <div class="resource-description">Design inspiration for the retro aesthetic.</div>
+              </li>
+              <li><span>&nbsp;&nbsp;└──</span>
+                <a
+                  href="<%= cyber_dabamos_88x31 %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="sidebar-link"
+                  >88x31 collection</a
+                >
+                <div class="resource-description">Source for various web badges and GIFs.</div>
+              </li>
+              <li><span>─</span>
+                <a
+                  href="<%= win98icons %>"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="sidebar-link"
+                  >Windows 98 Icons</a
+                >
+                <div class="resource-description">The primary source for pixelated UI icons.</div>
+              </li>
+            </ul>
+        </section>
+        <div class="main-content-footer">
+          <%- include('/shared/footer.html') %>
+        </div>
+      </section>
+      <section
+        class="right-sidebar sidebar-common"
+      >
+        <%- include('/shared/sidebar-right.html') %>
+      </section>
+    </div>
+
+  </body>
+</html>

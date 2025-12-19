@@ -1,0 +1,61 @@
+header {
+  border-bottom: 1px solid #000000;
+  width: 100%;
+  position: relative;
+  background-image:
+    linear-gradient(
+      to right,
+      #ffffff 0%,
+      #ffffff 264px,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    url('../sky_tile.gif');
+  background-repeat: no-repeat, repeat;
+  background-size:
+    100% 100%,
+    auto;
+}
+
+header h1 {
+  font-size: 32px;
+  color: #000080;
+  padding: 0 20px;
+}
+
+.header-title-container {
+  border-left: 1px solid #000000;
+  width: 100%;
+}
+
+.header-nav-bar {
+  background-color: #ffffff;
+  width: 100%;
+  padding: 5px 0;
+  border: 1px solid #000000;
+  border-bottom: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header-nav-bar nav ul {
+  list-style: none;
+  display: flex;
+  border-right: 1px solid #006400;
+}
+
+.header-nav-bar nav ul li:not(:last-child) {
+  border-right: 1px solid #006400;
+  margin-right: 5px;
+}
+
+.header-nav-bar nav ul li a {
+  color: #000080;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 2px 20px;
+  font-size: 20px;
+}
+
+.header-nav-bar nav ul li a:hover {
+  text-decoration: underline;
+}
