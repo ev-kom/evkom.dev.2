@@ -147,3 +147,25 @@
   font-style: italic;
   color: #666666;
 }
+
+/* Mobile guestbook */
+@media (max-width: 767px) {
+  .form-group {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .form-group label {
+    width: auto;
+  }
+
+  .guestbook-header-container {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .message-header {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

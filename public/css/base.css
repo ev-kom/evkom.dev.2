@@ -15,6 +15,12 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-width: 1128px;
   width: 100%;
+}
+
+/* Mobile responsive base */
+@media (max-width: 767px) {
+  html {
+    font-size: 14px;
+  }
 }

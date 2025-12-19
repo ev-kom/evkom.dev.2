@@ -133,3 +133,27 @@
   border-radius: 2px;
   border: 1px solid #ddd;
 }
+
+/* Mobile CV */
+@media (max-width: 767px) {
+  .cv-container {
+    padding: 16px;
+  }
+
+  .cv-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .job-header {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .job-title {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+  }
+}

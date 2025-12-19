@@ -57,3 +57,47 @@
 .sidebar-common a:hover {
   text-decoration: underline;
 }
+
+/* Mobile sidebar */
+@media (max-width: 767px) {
+  .sidebar-common {
+    border-left: none;
+    border-right: none;
+    border-top: 1px solid #000000;
+    font-size: 14px;
+  }
+
+  .sidebar-common h3 {
+    font-size: 14px;
+  }
+
+  .sidebar-common img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .sidebar-link-item img {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Center sidebar items as a group */
+  .sidebar-link-item,
+  .guestbook-item,
+  .best-viewed-item {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Hide empty placeholder divs on mobile */
+  .sidebar-link-item > div:empty,
+  .guestbook-item > div:empty,
+  .best-viewed-item > div:empty {
+    display: none;
+  }
+
+  /* Center gif columns */
+  .guestbook-gifs {
+    gap: 8px;
+  }
+}

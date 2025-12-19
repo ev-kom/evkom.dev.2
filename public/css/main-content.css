@@ -56,3 +56,20 @@
   display: block;
   margin-bottom: 12px;
 }
+
+/* Mobile main content */
+@media (max-width: 767px) {
+  .main-content-body {
+    padding: 16px;
+  }
+
+  .main-content-body img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .inline-gif {
+    width: 1.5em;
+    height: auto;
+  }
+}

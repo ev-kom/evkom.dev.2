@@ -16,3 +16,15 @@
   font-size: 16px;
   margin-bottom: 2px;
 }
+
+/* Mobile footer */
+@media (max-width: 767px) {
+  .main-content-footer::before {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+
+  .main-content-footer p {
+    font-size: 14px;
+  }
+}

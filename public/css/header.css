@@ -59,3 +59,40 @@ header h1 {
 .header-nav-bar nav ul li a:hover {
   text-decoration: underline;
 }
+
+/* Mobile header */
+@media (max-width: 767px) {
+  header {
+    background-image:
+      linear-gradient(to right, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
+      url('../sky_tile.gif');
+  }
+
+  header h1 {
+    font-size: 24px;
+    padding: 10px 16px;
+  }
+
+  .header-title-container {
+    border-left: none;
+  }
+
+  .header-nav-bar {
+    padding: 8px;
+  }
+
+  .header-nav-bar nav ul {
+    flex-wrap: wrap;
+    row-gap: 4px;
+    border-right: none;
+  }
+
+  .header-nav-bar nav ul li:last-child {
+    border-right: 1px solid #006400;
+  }
+
+  .header-nav-bar nav ul li a {
+    padding: 4px 12px;
+    font-size: 16px;
+  }
+}
