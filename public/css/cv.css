@@ -32,7 +32,7 @@
 }
 
 .retro-mail-btn {
-  padding: var(--space-xs) 6px;
+  padding: var(--space-xxs) var(--space-xxs);
   min-width: auto;
   display: inline-flex;
   align-items: center;
@@ -42,15 +42,15 @@
 }
 
 .retro-mail-btn:active {
-  padding: 5px 5px 3px 7px;
+  padding: var(--space-xs) var(--space-xs);
   border: var(--border-width) solid var(--color-border);
   border-right: var(--border-width) solid var(--color-bg);
   border-bottom: var(--border-width) solid var(--color-bg);
 }
 
 .retro-icon {
-  width: var(--icon-xs);
-  height: var(--icon-xs);
+  width: var(--icon-xxs);
+  height: var(--icon-xxs);
   image-rendering: pixelated;
 }
 
@@ -193,6 +193,10 @@
 
   .section-title {
     font-size: var(--text-lg);
+  }
+
+  .cv-title-container {
+    display: block;
   }
 }
 
