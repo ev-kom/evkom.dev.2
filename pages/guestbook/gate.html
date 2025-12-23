@@ -1,0 +1,41 @@
+<div class="guestbook-header-container">
+  <img src="gifs/guestbook.gif" alt="Guestbook GIF" />
+  <h2>Guestbook</h2>
+</div>
+
+<div class="win-dialog width-auto">
+  <div class="win-title-bar">
+    <span class="win-title-text">WINDOWS SECURITY</span>
+    <a href="/" class="win-close-btn" aria-label="Close">X</a>
+  </div>
+  <div class="win-content-wrapper">
+    <div class="win-content">
+      <div class="win-icon-container">
+        <img src="gifs/address_book-0.gif" alt="Secure" class="pixel-art" />
+      </div>
+      <div class="win-message" id="gate-message-loading">
+        <p><strong>Establishing Secure Connection</strong></p>
+        <p class="loading-text">Initiating handshake sequence</p>
+        <div
+          id="cf-widget-container"
+          class="cf-turnstile-wrapper"
+          data-sitekey="{{siteKey}}"
+        ></div>
+      </div>
+      <div class="win-message" id="gate-message-error" style="display: none">
+        <p><strong>Connection Terminated</strong></p>
+        <p>The secure handshake protocol was interrupted.</p>
+        <p>Access Denied (0x80070005).</p>
+      </div>
+    </div>
+
+    <div class="win-buttons" id="gate-error-buttons" style="display: none">
+      <a href="/guestbook" class="win-btn">Retry</a>
+    </div>
+
+    <script
+      src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+      defer
+    ></script>
+  </div>
+</div>

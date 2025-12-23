@@ -156,3 +156,27 @@
     font-size: var(--text-lg);
   }
 }
+
+/* Refactored Inline Styles */
+.cv-intro p {
+  margin-bottom: 10px;
+}
+
+.cv-intro ul {
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.job-summary {
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.job-summary-large {
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.job-description.education {
+  margin-top: 5px;
+}

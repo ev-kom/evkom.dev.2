@@ -44,14 +44,14 @@
 }
 
 .submit-btn:hover {
-  background-color: #e0e0e0;
+  background-color: var(--color-btn-hover);
   border-color: var(--color-navy);
 }
 
 .submit-btn:disabled {
-  background-color: #cccccc;
+  background-color: var(--color-btn-disabled-bg);
   cursor: not-allowed;
-  border-color: #999999;
+  border-color: var(--color-btn-disabled-border);
 }
 
 .message-list {
@@ -141,9 +141,37 @@
   padding: var(--space-sm) 0;
   font-style: italic;
   color: var(--color-muted);
+  display: inline-block;
+  position: relative;
 }
 
-/* Mobile guestbook */
+.loading-text::after {
+  content: '';
+  animation: dots var(--anim-duration-normal) var(--anim-steps-loading) infinite;
+  position: absolute;
+  left: 100%;
+  width: var(--loading-dots-width);
+  text-align: left;
+}
+
+@keyframes dots {
+  0%,
+  20% {
+    content: '';
+  }
+  40% {
+    content: '.';
+  }
+  60% {
+    content: '..';
+  }
+  80%,
+  100% {
+    content: '...';
+  }
+}
+
+/* Mobile Guestbook */
 @media (max-width: 767px) {
   .form-group {
     flex-direction: column;

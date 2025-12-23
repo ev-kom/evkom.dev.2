@@ -1,0 +1,185 @@
+/* Shared Windows-style Popup CSS */
+
+/* 
+  Windows 9x Dialog Component (Unified)
+*/
+.win-dialog {
+  background-color: var(--color-win-gray);
+  border: var(--border-width) solid var(--color-bg);
+  border-right: var(--border-width-thick) solid var(--color-win-shadow);
+  border-bottom: var(--border-width-thick) solid var(--color-win-shadow);
+  outline: var(--border-width) solid var(--color-border);
+  padding: var(--space-xxs);
+  box-shadow: var(--space-xs) var(--space-xs) 0px var(--color-win-shadow);
+  width: fit-content;
+  min-width: var(--win-dialog-min-width);
+  min-height: var(--win-dialog-min-height);
+  max-width: var(--dialog-width);
+  margin: 0 auto; /* Center horizontally */
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 767px) {
+  .win-dialog {
+    max-width: var(--win-mobile-max-width);
+  }
+}
+
+/* Modifier to allow custom widths via class instead of inline style */
+.win-dialog.width-auto {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.win-content-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.win-title-bar {
+  background: linear-gradient(
+    var(--win-gradient-angle),
+    var(--color-navy),
+    var(--color-win-blue-light)
+  );
+  padding: var(--space-xs) var(--space-sm);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-xxs);
+}
+
+.win-title-text {
+  color: white;
+  font-weight: bold;
+  font-size: var(--text-xs);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.win-close-btn {
+  background-color: var(--color-win-gray);
+  border: var(--border-width) solid var(--color-bg);
+  border-right: var(--border-width) solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
+  width: var(--icon-xxs);
+  height: var(--text-sm);
+  font-size: var(--text-xxs);
+  line-height: var(--text-xs);
+  color: black;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin-left: var(--space-sm);
+  cursor: pointer;
+  padding-bottom: var(--win-close-btn-adj-bottom); /* Visual adjustment */
+}
+
+.win-close-btn:active {
+  border: var(--border-width) solid var(--color-border);
+  border-right: var(--border-width) solid var(--color-bg);
+  border-bottom: var(--border-width) solid var(--color-bg);
+  padding: var(--win-close-btn-pressed-padding); /* Shift text down-right */
+}
+
+.win-content {
+  padding: var(--space-md);
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+  flex-grow: 1;
+}
+
+@media (max-width: 767px) {
+  .win-content {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+/* Merged icon container styles */
+.win-icon-container {
+  width: var(--icon-md);
+  height: var(--icon-md);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.win-icon-container img {
+  width: 100%;
+  height: 100%;
+}
+
+.win-message {
+  width: 100%;
+}
+
+.win-message h3 {
+  margin-top: 0;
+  margin-bottom: var(--space-sm);
+  font-size: var(--text-base);
+  color: black;
+}
+
+.win-message p {
+  margin: 0 0 var(--space-sm) 0;
+  font-size: var(--text-xs);
+  color: var(--color-text);
+}
+
+.win-buttons {
+  display: flex;
+  justify-content: center;
+  padding-bottom: var(--space-md);
+  gap: var(--space-sm);
+}
+
+.win-btn {
+  background-color: var(--color-win-gray);
+  border: var(--border-width) solid var(--color-bg);
+  border-right: var(--border-width) solid var(--color-border);
+  border-bottom: var(--border-width) solid var(--color-border);
+  outline: var(--border-width) solid var(--color-win-outline);
+  padding: var(--space-xs) var(--space-lg);
+  color: black;
+  font-size: var(--text-xs);
+  font-family: var(--font-family);
+  min-width: var(--btn-min-width);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.win-btn:active {
+  border: var(--border-width) solid var(--color-border);
+  border-right: var(--border-width) solid var(--color-bg);
+  border-bottom: var(--border-width) solid var(--color-bg);
+  outline: var(--border-width) solid var(--color-border);
+  padding: var(--win-btn-pressed-padding); /* Shift content */
+}
+
+/* Helpers for Extracted Styles from Gate/Guestbook */
+.win-gate-container {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.win-gate-title {
+  margin: 0 0 var(--space-md) 0;
+  font-size: var(--text-lg);
+  color: black;
+}

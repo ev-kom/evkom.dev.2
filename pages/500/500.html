@@ -5,29 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>500 Internal Server Error</title>
     <link rel="stylesheet" href="/css/base.css" />
-    <link rel="stylesheet" href="/css/404.css" />
+    <link rel="stylesheet" href="/css/windows-popup.css" />
   </head>
-  <body>
-    <div class="error-dialog">
-      <div class="title-bar">
-        <span class="title-text">Internet Explorer</span>
-        <a href="/" class="close-btn">X</a>
+  <body class="error-page">
+    <div class="win-dialog">
+      <div class="win-title-bar">
+        <span class="win-title-text">Internet Explorer</span>
+        <a href="/" class="win-close-btn" aria-label="Close">X</a>
       </div>
-      <div class="content">
-        <div class="icon-container">
-          <img src="/gifs/restrict-1.gif" alt="Error" class="pixel-art" />
+      <div class="win-content-wrapper">
+        <div class="win-content">
+          <div class="win-icon-container">
+            <img src="/gifs/restrict-1.gif" alt="" class="pixel-art" />
+          </div>
+          <div class="win-message">
+            <p><strong>500 Internal Server Error</strong></p>
+            <p>
+              The server encountered an unexpected condition that prevented it
+              from fulfilling the request.
+            </p>
+            <p>Please try again later or contact the administrator.</p>
+          </div>
         </div>
-        <div class="message">
-          <p><strong>500 Internal Server Error</strong></p>
-          <p>
-            The server encountered an unexpected condition that prevented it
-            from fulfilling the request.
-          </p>
-          <p>Please try again later or contact the administrator.</p>
+        <div class="win-buttons">
+          <a href="/" class="win-btn">OK</a>
         </div>
-      </div>
-      <div class="buttons">
-        <a href="/" class="btn">OK</a>
       </div>
     </div>
   </body>

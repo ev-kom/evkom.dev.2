@@ -17,27 +17,31 @@
     />
   </head>
   <body>
-    <header><%- include('/shared/header.html') %></header>
+    <header><x-include src="shared/header"></x-include></header>
     <div class="container">
       <section class="left-sidebar sidebar-common">
-        <%- include('/shared/sidebar-left.html') %>
+        <x-include src="shared/sidebar-left"></x-include>
       </section>
       <section class="main-content">
         <section class="main-content-body cv-container">
           <div class="cv-header">
             <h2>Egor Komarov</h2>
-            <p>Full Stack Software Engineer | Nuclear Physics Background</p>
+            <p>
+              Full Stack Software Engineer | Java Backend Engineer with Frontend
+              & Mobile Experience
+            </p>
           </div>
 
           <div class="cv-intro">
-            <p style="margin-bottom: 10px">
+            <p>
               Full stack software engineer with 9+ years of experience building
               high-load, distributed, customer-facing systems with a background
-              in nuclear physics. Experienced in designing, developing, and
-              maintaining complex systems using Java, Spring Boot, and
-              microservices (REST, Kafka).
+              in nuclear physics. Primarily a Java expert with strong frontend
+              and mobile (Android/iOS) capabilities. Experienced in designing,
+              developing, and maintaining complex systems using Java, Spring
+              Boot, and microservices (REST, Kafka).
             </p>
-            <ul style="padding-left: 20px; list-style-type: disc">
+            <ul>
               <li>
                 Comfortable designing and implementing all layers of the stack
                 from database, infrastructure, and inter-system communication to
@@ -84,7 +88,7 @@
 
             <div>
               <span class="job-location">Berlin, Germany</span>
-              <p style="margin-bottom: 20px; font-style: italic">
+              <p class="job-summary-large">
                 Klarna is a global payments and BNPL company. My team runs ~30
                 Spring Boot Java microservices (Kafka/REST) handling the full
                 Customer Communications lifecycle: orchestration, decisions,
@@ -258,7 +262,7 @@
               <span class="job-date">May 2017 - Sep 2022</span>
             </div>
             <span class="job-location">Moscow, Russia</span>
-            <p style="margin-bottom: 10px; font-style: italic">
+            <p class="job-summary">
               Partnering with Accenture, Gridfore provides a platform for
               <strong>real-time big data analysis</strong> and decision making
               for <strong>banking</strong> and <strong>fintech</strong>.
@@ -306,7 +310,7 @@
               <span class="job-date">Mar 2021 - Mar 2022</span>
             </div>
             <span class="job-location">Atlanta, GA, USA</span>
-            <p style="margin-bottom: 10px; font-style: italic">
+            <p class="job-summary">
               A startup focused on changing recruitment by creating an intuitive
               experience for candidates and companies.
             </p>
@@ -354,7 +358,7 @@
               </div>
               <span class="job-date">Aug 2016 - May 2017</span>
             </div>
-            <p style="margin-bottom: 10px; font-style: italic">
+            <p class="job-summary">
               AT Consulting provides custom software solutions and consulting
               expertise.
             </p>
@@ -388,7 +392,7 @@
               </div>
               <span class="job-date">Jul 2014 - Dec 2015</span>
             </div>
-            <p style="margin-bottom: 10px; font-style: italic">
+            <p class="job-summary">
               Research Institute for Nuclear Power Plants Operation.
             </p>
             <div class="job-description">
@@ -425,7 +429,7 @@
                 >National Research Nuclear University MEPhI</a
               >
             </div>
-            <div class="job-description" style="margin-top: 5px">
+            <div class="job-description education">
               Masters Degree. Grade: 4.8/5.0
             </div>
             <div class="job-tags">
@@ -444,11 +448,11 @@
           </div>
         </section>
         <div class="main-content-footer">
-          <%- include('/shared/footer.html') %>
+          <x-include src="shared/footer"></x-include>
         </div>
       </section>
       <section class="right-sidebar sidebar-common">
-        <%- include('/shared/sidebar-right.html') %>
+        <x-include src="shared/sidebar-right"></x-include>
       </section>
     </div>
   </body>

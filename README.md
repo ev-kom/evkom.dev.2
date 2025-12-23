@@ -4,18 +4,44 @@ Retro 2000s-style personal portfolio for Egor Komarov.
 
 ## Features
 
-- **Vanilla JS**: Built without frameworks to keep the site lightweight. External libraries are restricted to only those providing significant value.
-- **Retro Aesthetic**: 2000s-inspired UI with Space Mono, blocky borders, and CSS Grid layout.
-- **Custom SSG & Server**: A bespoke build system and dev server written in pure Node.js, Express, and EJS. Features a two-phase rendering pipeline (Static Build + Dynamic Runtime). Because sometimes reinventing the wheel is just plain fun.
-- **Guestbook**: Google Sheets integration for persistent entries.
-- **Y2K Error Pages**: Themed 404 and 500 pages with interactive elements.
-- **Security**: Stateless gating with Cloudflare Turnstile token verification.
+### Custom SSG & Universal Rendering
 
-## Tech Stack
+The site runs on a custom Static Site Generator built in Node.js.
 
-- **Core**: Node.js, HTML, Vanilla CSS.
-- **Backend**: Express (dev server), Google Sheets API.
-- **Deployment**: Static build output in `dist/`.
+- **Unified Pipeline**: The core renderer (`backend/renderer.js`) powers both the live dev server and the production build.
+- **Recursive Composition**: Supports nesting partials using `<x-include>` tags.
+- **Hybrid Rendering**: Components render statically by default but can use `<x-dynamic>` for runtime updates.
+
+### Retro UI
+
+- **No Frameworks**: Pure HTML and CSS. No React, Vue, or Tailwind.
+- **Systematic Styling**: Use `variables.css` for consistent styling (fonts, colors, borders) instead of hardcoded values.
+- **Pixelated Assets**: Uses 88x31 buttons and dithering effects.
+
+### Guestbook Security
+
+A spam-resistant commenting system.
+
+1.  **Gate**: Generates a Cloudflare Turnstile token on the client.
+2.  **Session**: Server validates Turnstile and issues a signed Session Token.
+3.  **Submission**: Message submission requires the encrypted session token.
+4.  **Verification**: Uses constant-time signature verification to prevent timing attacks.
+
+## Approach
+
+### Philosophy
+
+This project avoids modern bundlers and frameworks to maintain control and simplicity.
+
+- **Performance**: Fast load times.
+- **Transparency**: No hidden dependencies.
+- **Longevity**: Uses standard web technologies (ESM, CSS3).
+
+### Architecture
+
+- **`backend/`**: Renderer, registries, and security logic.
+- **`pages/`**: Templates (`.html`) and logic (`.server.js`).
+- **`public/`**: Static assets.
 
 ## Setup
 
@@ -30,6 +56,7 @@ Create a `.env` file in the root directory:
 ```bash
 TURNSTILE_SITE_KEY=your_site_key
 TURNSTILE_SECRET_KEY=your_secret_key
+SESSION_SECRET_KEY=random_string_for_signing
 GOOGLE_SERVICE_ACCOUNT='{"type": "service_account", ...}'
 GOOGLE_SHEET_ID=your_sheet_id
 GOOGLE_SHEET_NAME=Sheet1

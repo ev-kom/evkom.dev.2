@@ -1,34 +1,28 @@
-import { cp, mkdir, rm, writeFile } from 'fs/promises';
+import { cp, rm } from 'fs/promises';
 import { join } from 'path';
-import { PAGES, renderStaticPage } from './backend/static-renderer.js';
+import { build } from './backend/renderer.js';
 
 const STATIC_DIRS = ['public'];
-const DIST_DIR = join(process.cwd(), 'dist');
 
-async function build() {
+async function runBuild(distDir = './dist') {
   console.log('Starting build...');
 
-  await rm(DIST_DIR, { recursive: true, force: true });
-  await mkdir(DIST_DIR, { recursive: true });
+  await rm(distDir, { recursive: true, force: true });
 
-  // Render pages
-  for (const page of PAGES) {
-    console.log(`Rendering ${page}...`);
-    const html = await renderStaticPage(page);
-    await writeFile(join(DIST_DIR, `${page}.html`), html);
-  }
+  // Render all static content
+  await build(distDir);
 
   // Copy static assets
   for (const dir of STATIC_DIRS) {
     console.log(`Copying ${dir}...`);
     // Copy contents of public directly to dist
-    await cp(join(process.cwd(), dir), DIST_DIR, { recursive: true });
+    await cp(join(process.cwd(), dir), distDir, { recursive: true });
   }
 
   console.log('Build complete.');
 }
 
-build().catch((err) => {
+runBuild().catch((err) => {
   console.error('Build failed:', err);
   process.exit(1);
 });

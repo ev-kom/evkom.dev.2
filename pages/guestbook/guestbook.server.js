@@ -1,35 +1,75 @@
-import ejs from 'ejs';
-import { readFile } from 'fs/promises';
-import { dirname, join } from 'path';
-import { fileURLToPath } from 'url';
+import {
+  CaptchaState,
+  verifyTurnstileToken,
+  generateSessionToken,
+  verifySessionToken,
+} from '../../backend/captcha.js';
 import { getGuestbookMessages } from '../../backend/google-sheets.js';
-import { getError500 } from '../../backend/static-renderer.js';
+import { loadRaw } from '../../backend/renderer.js';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+/**
+ * Dynamic Handler for Guestbook Page
+ */
+export const guestbook_content = async ({ render, ...params }) => {
+  try {
+    // 1. Allow access via valid Session Token (from POST body during reload)
+    if (params.sessionToken && verifySessionToken(params.sessionToken)) {
+      const newSessionToken = generateSessionToken();
+      return await render('guestbook/content', {
+        sessionToken: newSessionToken,
+      });
+    }
 
-async function loadTemplate(filename) {
-  return readFile(join(__dirname, filename), 'utf8');
-}
+    // 2. Verify Turnstile (Gate Entry)
+    const token = params['cf-turnstile-response'];
+    const verificationStatus = await verifyTurnstileToken(token);
 
-export const guestbook_messages = async (params) => {
+    if (verificationStatus === CaptchaState.EMPTY) {
+      return await render('guestbook/gate');
+    }
+
+    if (verificationStatus === CaptchaState.INVALID) {
+      return await render('guestbook/error');
+    }
+
+    // This template contains <x-dynamic src="guestbook/messages">
+    const sessionToken = generateSessionToken();
+
+    if (!sessionToken) {
+      console.error('Failed to generate session token (missing secret?)');
+      return await render('guestbook/error');
+    }
+
+    return await render('guestbook/content', { sessionToken });
+  } catch (err) {
+    console.error('Error rendering guestbook content:', err);
+    return await render('guestbook/error');
+  }
+};
+
+/**
+ * Handler for the list of messages
+ */
+export const guestbook_messages = async ({ render }) => {
   try {
     const messages = await getGuestbookMessages();
 
-    if (!Array.isArray(messages)) {
-      return '<div class="loading-text">Error loading messages.</div>';
+    if (messages.length > 0) {
+      const messagesHtml = await Promise.all(
+        messages.map((msg) =>
+          render('guestbook/message', {
+            name: msg.name,
+            timestamp: msg.timestamp,
+            message: msg.message,
+          })
+        )
+      );
+      return messagesHtml.join('');
     }
 
-    if (!messages || messages.length === 0) {
-      return '<div class="loading-text">No messages yet.</div>';
-    }
-
-    const template = await loadTemplate('message.html');
-
-    return messages
-      .map((message) => ejs.render(template, { ...message }))
-      .join('');
+    return await render('guestbook/no_messages');
   } catch (err) {
     console.error('Error rendering guestbook messages:', err);
-    return getError500();
+    return await render('guestbook/error');
   }
 };

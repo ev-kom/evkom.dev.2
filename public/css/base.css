@@ -20,6 +20,18 @@ body {
   width: 100%;
 }
 
+/* Page-level styles for full-screen error pages (404, 500) */
+.error-page {
+  background: var(--color-win-teal) url('/sky_tile.gif') repeat;
+  font-family: var(--font-family);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Allow scroll if content is tall */
+  margin: 0;
+  overflow: auto; /* Allow scroll */
+}
+
 /* Flex Utilities */
 .flex-center {
   display: flex;

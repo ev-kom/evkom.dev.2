@@ -37,6 +37,26 @@
   --color-win-blue-light: #1084d0;
   --color-input-border: #7f9db9;
   --color-nav-divider: #006400;
+  --color-btn-hover: #e0e0e0;
+  --color-btn-disabled-bg: #cccccc;
+  --color-btn-disabled-border: #999999;
+
+  /* Windows UI - Specific Dimensions */
+  --win-close-btn-width: var(--icon-xxs);
+  --win-close-btn-height: var(--text-sm);
+  --win-close-btn-font-size: var(--text-xxs);
+  --win-close-btn-line-height: var(--text-xs);
+  --win-close-btn-adj-bottom: 1px;
+  --win-close-btn-pressed-padding: 1px 0 0 1px;
+  --win-btn-pressed-padding: 5px 19px 3px 21px;
+  --win-gradient-angle: 90deg;
+
+  /* Colors - Alerts/System */
+  --color-sys-error-bg: #ffcccc;
+  --color-sys-error-border: #ff0000;
+  --color-sys-error-shadow: #800000;
+  --color-sys-error-text: #aa0000;
+  --color-sys-alert-text: #ffff00;
 
   /* Typography - Font */
   --font-family: 'Space Mono', monospace;
@@ -66,21 +86,33 @@
   --border-radius-sm: 2px;
 
   /* Icons */
-  --icon-xs: 20px;
-  --icon-sm: 24px;
-  --icon-md: 32px;
+  --icon-xxs: 16px;
+  --icon-xs: 24px;
+  --icon-sm: 32px;
+  --icon-md: 40px;
 
   /* GIF sizing */
-  --gif-width-mobile: 4em;
+  --gif-width-mobile: calc(88px / 1.5);
 
   /* Layout */
   --sidebar-width: 20%;
   --content-max-width: 800px;
   --dialog-width: 400px;
+  --win-mobile-max-width: 300px;
+  --win-dialog-min-width: 300px;
+  --win-dialog-min-height: 200px;
+
+  /* Animation */
+  --anim-duration-normal: 1.5s;
+  --anim-steps-loading: steps(5, end);
 
   /* Form Elements */
   --form-label-width: 128px;
   --form-textarea-height: 96px;
+  --btn-min-width: 60px;
+
+  /* Loading Dots Width */
+  --loading-dots-width: 1.5em;
 
   /* Breakpoints (for reference, can't use in media queries) */
   --bp-mobile: 767px;

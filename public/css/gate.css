@@ -1,6 +1,0 @@
-.gate-container {
-  text-align: center;
-  padding: var(--space-2xl);
-  border: var(--border-width-thick) dashed var(--color-muted);
-  margin-top: var(--space-2xl);
-}

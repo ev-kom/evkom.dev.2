@@ -16,10 +16,10 @@
     />
   </head>
   <body>
-    <header><%- include('/shared/header.html') %></header>
+    <header><x-include src="shared/header"></x-include></header>
     <div class="container">
       <section class="left-sidebar sidebar-common">
-        <%- include('/shared/sidebar-left.html') %>
+        <x-include src="shared/sidebar-left"></x-include>
       </section>
       <section class="main-content">
         <section class="main-content-body">
@@ -41,11 +41,11 @@
           </p>
         </section>
         <div class="main-content-footer">
-          <%- include('/shared/footer.html') %>
+          <x-include src="shared/footer"></x-include>
         </div>
       </section>
       <section class="right-sidebar sidebar-common">
-        <%- include('/shared/sidebar-right.html') %>
+        <x-include src="shared/sidebar-right"></x-include>
       </section>
     </div>
   </body>

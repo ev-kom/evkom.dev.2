@@ -16,12 +16,12 @@
     />
   </head>
   <body>
-    <header><%- include('/shared/header.html') %></header>
+    <header><x-include src="shared/header"></x-include></header>
     <div class="container">
       <section
         class="left-sidebar sidebar-common"
       >
-        <%- include('/shared/sidebar-left.html') %>
+        <x-include src="shared/sidebar-left"></x-include>
       </section>
       <section class="main-content">
         <section class="main-content-body">
@@ -36,8 +36,8 @@
               <ul>
                 <li><a href="index.html">Home</a></li>
                 <li><span>├──</span> <a href="cv.html">CV</a></li>
-                <li><span>├──</span> <a href="<%= linkedin %>" target="_blank">Linkedin</a></li>
-                <li><span>├──</span> <a href="<%= github %>" target="_blank">Github</a></li>
+                <li><span>├──</span> <a href="{{linkedin}}" target="_blank">Linkedin</a></li>
+                <li><span>├──</span> <a href="{{github}}" target="_blank">Github</a></li>
                 <li><span>├──</span> <a href="guestbook.html">Guestbook</a></li>
                 <li><span>└──</span> <a href="manifest.html">Manifest</a></li>
               </ul>
@@ -54,7 +54,7 @@
                 />
                 Background&nbsp;
                 <a
-                  href="<%= clouds_wallpaper %>"
+                  href="{{clouds_wallpaper}}"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="sidebar-link"
@@ -62,7 +62,7 @@
                 >
                 &nbsp;/&nbsp;
                 <a
-                  href="<%= cc_by_sa %>"
+                  href="{{cc_by_sa}}"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="sidebar-link"
@@ -72,7 +72,7 @@
               </li>
               <li><span>─</span>
                 <a
-                  href="<%= cyber_dabamos %>"
+                  href="{{cyber_dabamos}}"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="sidebar-link"
@@ -82,7 +82,7 @@
               </li>
               <li><span>&nbsp;&nbsp;└──</span>
                 <a
-                  href="<%= cyber_dabamos_88x31 %>"
+                  href="{{cyber_dabamos_88x31}}"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="sidebar-link"
@@ -92,7 +92,7 @@
               </li>
               <li><span>─</span>
                 <a
-                  href="<%= win98icons %>"
+                  href="{{win98icons}}"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="sidebar-link"
@@ -103,13 +103,13 @@
             </ul>
         </section>
         <div class="main-content-footer">
-          <%- include('/shared/footer.html') %>
+          <%- include('shared/footer.html') %>
         </div>
       </section>
       <section
         class="right-sidebar sidebar-common"
       >
-        <%- include('/shared/sidebar-right.html') %>
+        <x-include src="shared/sidebar-right"></x-include>
       </section>
     </div>
 

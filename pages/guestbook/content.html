@@ -1,0 +1,15 @@
+<div class="guestbook-header-container">
+  <img src="gifs/guestbook.gif" alt="Guestbook GIF" />
+  <h2>Guestbook</h2>
+</div>
+<p>Feel free to write down a comment.</p>
+
+<x-include src="guestbook/form"></x-include>
+
+<div class="past-messages-header">
+  <h3>Past messages:</h3>
+</div>
+
+<div id="messages" class="message-list">
+  <x-dynamic src="guestbook/messages"></x-dynamic>
+</div>

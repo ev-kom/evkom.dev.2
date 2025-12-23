@@ -8,11 +8,13 @@
       />
     </div>
     <div class="message-name-row">
-      <strong><%= name %></strong>
+      <strong><x-var name="name"></x-var></strong>
     </div>
     <div class="message-meta-row">
-      <span class="message-meta">wrote on <%= timestamp %>:</span>
+      <span class="message-meta"
+        >wrote on <x-var name="timestamp"></x-var>:</span
+      >
     </div>
   </div>
-  <div class="message-body"><%= message %></div>
+  <div class="message-body"><x-var name="message"></x-var></div>
 </div>
