@@ -1,3 +1,31 @@
+const LOADING_PHRASES = [
+  'Initiating handshake sequence',
+  'Synchronizing remote port',
+  'Allocating system buffers',
+  'Bypassing secure firewall',
+  'Pinging server matrix',
+];
+
+let loadingInterval = null;
+
+function startLoadingAnimation() {
+  const textEl = document.querySelector('#gate-message-loading .loading-text');
+  if (!textEl) return;
+
+  let index = 0;
+  loadingInterval = setInterval(() => {
+    index = (index + 1) % LOADING_PHRASES.length;
+    textEl.textContent = LOADING_PHRASES[index];
+  }, 1000);
+}
+
+function stopLoadingAnimation() {
+  if (loadingInterval) {
+    clearInterval(loadingInterval);
+    loadingInterval = null;
+  }
+}
+
 window.onloadTurnstileCallback = function () {
   const container = document.getElementById('cf-widget-container');
   if (!container) return;
@@ -6,6 +34,8 @@ window.onloadTurnstileCallback = function () {
     console.error('Site key not found');
     return;
   }
+
+  startLoadingAnimation();
 
   turnstile.render('#cf-widget-container', {
     sitekey: siteKey,
@@ -63,6 +93,7 @@ window.replaceDocument = function (html, sessionToken) {
 };
 
 function onTurnstileError() {
+  stopLoadingAnimation();
   // Fetch server-rendered error page
   fetch('/guestbook.html', {
     method: 'POST',
@@ -80,6 +111,7 @@ function onTurnstileError() {
 }
 
 function onTurnstileSuccess(token) {
+  stopLoadingAnimation();
   fetch('/guestbook.html', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
