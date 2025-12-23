@@ -16,7 +16,7 @@ function startLoadingAnimation() {
   loadingInterval = setInterval(() => {
     index = (index + 1) % LOADING_PHRASES.length;
     textEl.textContent = LOADING_PHRASES[index];
-  }, 1000);
+  }, 3000);
 }
 
 function stopLoadingAnimation() {
