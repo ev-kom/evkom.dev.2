@@ -16,23 +16,42 @@ window.onloadTurnstileCallback = function () {
   });
 };
 
-window.replaceDocument = function (html) {
+window.replaceDocument = function (html, sessionToken) {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
 
-  // Replace document content
-  document.documentElement.innerHTML = doc.documentElement.innerHTML;
+  const newContent = doc.querySelector('.main-content-body-guestbook');
+  const oldContent = document.querySelector('.main-content-body-guestbook');
 
-  // Re-execute scripts
-  const scripts = document.querySelectorAll('script');
-  scripts.forEach((oldScript) => {
-    const newScript = document.createElement('script');
-    Array.from(oldScript.attributes).forEach((attr) =>
-      newScript.setAttribute(attr.name, attr.value)
-    );
-    newScript.textContent = oldScript.textContent;
-    oldScript.parentNode.replaceChild(newScript, oldScript);
-  });
+  if (newContent && oldContent) {
+    oldContent.innerHTML = newContent.innerHTML;
+
+    // Update URL if sessionToken is provided (for F5 persistence)
+    if (sessionToken) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('sessionToken', sessionToken);
+      window.history.replaceState({}, '', url.toString());
+    }
+
+    // Re-execute any scripts if they are in the new content
+    const scripts = newContent.querySelectorAll('script');
+    scripts.forEach((oldScript) => {
+      const newScript = document.createElement('script');
+      Array.from(oldScript.attributes).forEach((attr) =>
+        newScript.setAttribute(attr.name, attr.value)
+      );
+      newScript.textContent = oldScript.textContent;
+      document.body.appendChild(newScript);
+    });
+
+    // Re-initialize guestbook logic if present
+    if (window.initGuestbook) {
+      window.initGuestbook();
+    }
+  } else {
+    // Fallback to full page refresh if structure is different
+    window.location.reload();
+  }
 };
 
 function onTurnstileError() {

@@ -8,7 +8,7 @@
 }
 
 .cv-header {
-  border-bottom: var(--border-width) solid var(--color-border-lighter);
+  border-bottom: var(--border-width-thick) solid var(--color-border);
   margin-bottom: var(--space-xl);
   padding-bottom: var(--space-md);
 }
@@ -20,15 +20,54 @@
 }
 
 .cv-header p {
-  color: #555;
+  color: var(--color-text-tertiary);
   font-size: var(--text-sm);
+}
+
+.cv-title-container {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xs);
+}
+
+.retro-mail-btn {
+  padding: var(--space-xs) 6px;
+  min-width: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.retro-mail-btn:active {
+  padding: 5px 5px 3px 7px;
+  border: var(--border-width) solid var(--color-border);
+  border-right: var(--border-width) solid var(--color-bg);
+  border-bottom: var(--border-width) solid var(--color-bg);
+}
+
+.retro-icon {
+  width: var(--icon-xs);
+  height: var(--icon-xs);
+  image-rendering: pixelated;
+}
+
+.retro-mail-btn {
+  margin-right: var(--space-sm);
+}
+
+.retro-mail-text {
+  font-size: var(--text-base);
+  color: var(--color-text-dark);
 }
 
 .cv-intro {
   font-size: var(--text-base);
   margin-bottom: var(--space-xl);
   line-height: var(--line-height-relaxed);
-  color: #222;
+  color: var(--color-text-dark);
 }
 
 /* Common Section Headers */
@@ -63,12 +102,12 @@
 }
 
 .job-company {
-  color: #444;
+  color: var(--color-text-secondary);
   font-weight: normal;
 }
 
 .job-company a {
-  color: #444;
+  color: var(--color-text-secondary);
   text-decoration: underline;
   text-decoration-style: dotted;
 }
@@ -80,13 +119,13 @@
 
 .job-date {
   font-size: var(--text-sm);
-  color: #777;
+  color: var(--color-muted-dark);
   white-space: nowrap;
 }
 
 .job-location {
-  font-size: 0.85rem;
-  color: #888;
+  font-size: var(--text-sm);
+  color: var(--color-muted-light);
   margin-bottom: var(--space-sm);
   display: block;
 }
@@ -113,7 +152,7 @@
   content: '•';
   position: absolute;
   left: 0;
-  color: #999;
+  color: var(--color-muted-lighter);
 }
 
 /* Tags per job */
@@ -127,7 +166,7 @@
 .job-tag {
   font-size: var(--text-xs);
   background-color: var(--color-bg-light);
-  color: #444;
+  color: var(--color-text-secondary);
   padding: var(--space-xxs) var(--space-sm);
   border-radius: var(--border-radius-sm);
   border: var(--border-width) solid var(--color-border-light);
@@ -159,24 +198,24 @@
 
 /* Refactored Inline Styles */
 .cv-intro p {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-sm);
 }
 
 .cv-intro ul {
-  padding-left: 20px;
+  padding-left: var(--space-lg);
   list-style-type: disc;
 }
 
 .job-summary {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-sm);
   font-style: italic;
 }
 
 .job-summary-large {
-  margin-bottom: 20px;
+  margin-bottom: var(--space-md);
   font-style: italic;
 }
 
 .job-description.education {
-  margin-top: 5px;
+  margin-top: var(--space-xs);
 }

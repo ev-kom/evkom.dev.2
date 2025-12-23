@@ -29,7 +29,8 @@
   --color-bg-transparent: rgba(255, 255, 255, 0);
 
   /* Colors - Windows UI */
-  --color-win-gray: #c0c0c0;
+  --pixel-grey-1: #c0c0c0;
+  --color-win-gray: var(--pixel-grey-1);
   --color-win-shadow: #555;
   --color-win-highlight: #dfdfdf;
   --color-win-outline: #888;
