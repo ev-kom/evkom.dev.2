@@ -26,7 +26,15 @@ window.replaceDocument = function (html, sessionToken) {
   if (newContent && oldContent) {
     oldContent.innerHTML = newContent.innerHTML;
 
-    // Update URL if sessionToken is provided (for F5 persistence)
+    // Extract sessionToken from hidden input if not provided manually
+    if (!sessionToken) {
+      const tokenInput = oldContent.querySelector('input[name="sessionToken"]');
+      if (tokenInput) {
+        sessionToken = tokenInput.value;
+      }
+    }
+
+    // Update URL if sessionToken is found (for F5 persistence)
     if (sessionToken) {
       const url = new URL(window.location.href);
       url.searchParams.set('sessionToken', sessionToken);
