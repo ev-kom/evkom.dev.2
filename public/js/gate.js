@@ -42,7 +42,7 @@ window.onloadTurnstileCallback = function () {
     callback: onTurnstileSuccess,
     'error-callback': onTurnstileError,
     'expired-callback': onTurnstileError,
-    theme: 'light',
+    size: 'compact',
   });
 };
 
