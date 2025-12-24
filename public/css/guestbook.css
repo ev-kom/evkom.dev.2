@@ -140,11 +140,12 @@
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
-  width: 1px !important;
-  height: 1px !important;
-  opacity: 0.01 !important;
+  width: 10px !important; /* Higher than 4px to avoid Chrome throttling */
+  height: 10px !important; /* Higher than 4px to avoid Chrome throttling */
+  opacity: 0.05 !important; /* Slightly higher opacity to avoid throttling */
   pointer-events: none !important;
   z-index: 9999 !important;
+  overflow: hidden !important;
 }
 
 .loading-text,
