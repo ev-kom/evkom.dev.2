@@ -359,4 +359,19 @@
     min-height: var(--terminal-min-height-desktop);
     max-width: none;
   }
+
+  .win-title-bar.terminal-title-bar {
+    height: var(--text-2xl);
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .win-title-text.terminal-title {
+    font-size: var(--text-base);
+  }
+
+  .win-close-btn.terminal-close {
+    width: var(--text-lg);
+    height: var(--text-lg);
+    font-size: var(--text-xs);
+  }
 }
