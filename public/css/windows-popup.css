@@ -1,8 +1,5 @@
 /* Shared Windows-style Popup CSS */
 
-/* 
-  Windows 9x Dialog Component (Unified)
-*/
 .win-dialog {
   background-color: var(--color-win-gray);
   border: var(--border-width) solid var(--color-bg);
@@ -15,9 +12,7 @@
   min-width: var(--win-dialog-min-width);
   min-height: var(--win-dialog-min-height);
   max-width: var(--dialog-width);
-  margin: 0 auto; /* Center horizontally */
-  display: flex;
-  flex-direction: column;
+  margin: 0 auto;
 }
 
 @media (max-width: 767px) {
@@ -26,7 +21,6 @@
   }
 }
 
-/* Modifier to allow custom widths via class instead of inline style */
 .win-dialog.width-auto {
   width: fit-content;
   margin-left: auto;
@@ -35,8 +29,6 @@
 
 .win-content-wrapper {
   flex-grow: 1;
-  display: flex;
-  flex-direction: column;
   height: 100%;
 }
 
@@ -47,9 +39,7 @@
     var(--color-win-blue-light)
   );
   padding: var(--space-xs) var(--space-sm);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: var(--space-xs) var(--space-sm);
   margin-bottom: var(--space-xxs);
 }
 
@@ -81,14 +71,14 @@
   text-decoration: none;
   margin-left: var(--space-sm);
   cursor: pointer;
-  padding-bottom: var(--win-close-btn-adj-bottom); /* Visual adjustment */
+  padding-bottom: var(--win-close-btn-adj-bottom);
 }
 
 .win-close-btn:active {
   border: var(--border-width) solid var(--color-border);
   border-right: var(--border-width) solid var(--color-bg);
   border-bottom: var(--border-width) solid var(--color-bg);
-  padding: var(--win-close-btn-pressed-padding); /* Shift text down-right */
+  padding: var(--win-close-btn-pressed-padding);
 }
 
 .win-content {
@@ -107,7 +97,6 @@
   }
 }
 
-/* Merged icon container styles */
 .win-icon-container {
   width: var(--icon-md);
   height: var(--icon-md);
@@ -168,10 +157,9 @@
   border-right: var(--border-width) solid var(--color-bg);
   border-bottom: var(--border-width) solid var(--color-bg);
   outline: var(--border-width) solid var(--color-border);
-  padding: var(--win-btn-pressed-padding); /* Shift content */
+  padding: var(--win-btn-pressed-padding);
 }
 
-/* Helpers for Extracted Styles from Gate/Guestbook */
 .win-gate-container {
   display: block;
   text-align: center;

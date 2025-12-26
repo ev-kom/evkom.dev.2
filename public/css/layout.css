@@ -16,7 +16,6 @@
   grid-area: right;
 }
 
-/* Mobile: stack vertically */
 @media (max-width: 767px) {
   .container {
     grid-template-columns: 1fr;
@@ -34,13 +33,9 @@
   padding: var(--space-md);
   font-size: var(--text-base);
   color: var(--color-text);
-  display: flex;
-  flex-direction: column;
   gap: var(--space-md);
 }
 
 .main-content {
   background-color: var(--color-bg);
-  display: flex;
-  flex-direction: column;
 }

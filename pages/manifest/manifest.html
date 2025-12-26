@@ -19,11 +19,11 @@
     <header><x-include src="shared/header"></x-include></header>
     <div class="container">
       <section
-        class="left-sidebar sidebar-common"
+        class="left-sidebar sidebar-common flex-col"
       >
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content">
+      <section class="main-content flex-col">
         <section class="main-content-body">
           <h2 class="attribution-header">Manifest</h2>
           <div class="attribution-section">
@@ -34,19 +34,19 @@
           <h3 class="attribution-header">Site Map</h3>
           <div class="attribution-section">
               <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><span>├──</span> <a href="cv.html">CV</a></li>
-                <li><span>├──</span> <a href="{{linkedin}}" target="_blank">Linkedin</a></li>
-                <li><span>├──</span> <a href="{{github}}" target="_blank">Github</a></li>
-                <li><span>├──</span> <a href="guestbook.html">Guestbook</a></li>
-                <li><span>└──</span> <a href="manifest.html">Manifest</a></li>
+                <li class="flex-center"><a href="index.html">Home</a></li>
+                <li class="flex-center"><span>├──</span> <a href="cv.html">CV</a></li>
+                <li class="flex-center"><span>├──</span> <a href="{{linkedin}}" target="_blank">Linkedin</a></li>
+                <li class="flex-center"><span>├──</span> <a href="{{github}}" target="_blank">Github</a></li>
+                <li class="flex-center"><span>├──</span> <a href="guestbook.html">Guestbook</a></li>
+                <li class="flex-center"><span>└──</span> <a href="manifest.html">Manifest</a></li>
               </ul>
           </div>
 
           <h3 class="attribution-header">Resources</h3>
           <div class="attribution-section">
             <ul class="resources-list">
-              <li><span>─</span>
+              <li class="flex-center"><span>─</span>
                 <img
                   src="/sky_tile.gif"
                   alt="Asset icon"
@@ -70,7 +70,7 @@
                 >
                 <div class="resource-description">Used for the tiling sky background.</div>
               </li>
-              <li><span>─</span>
+              <li class="flex-center"><span>─</span>
                 <a
                   href="{{cyber_dabamos}}"
                   target="_blank"
@@ -80,7 +80,7 @@
                 >
                 <div class="resource-description">Design inspiration for the retro aesthetic.</div>
               </li>
-              <li><span>&nbsp;&nbsp;└──</span>
+              <li class="flex-center"><span>&nbsp;&nbsp;└──</span>
                 <a
                   href="{{cyber_dabamos_88x31}}"
                   target="_blank"
@@ -90,7 +90,7 @@
                 >
                 <div class="resource-description">Source for various web badges and GIFs.</div>
               </li>
-              <li><span>─</span>
+              <li class="flex-center"><span>─</span>
                 <a
                   href="{{win98icons}}"
                   target="_blank"
@@ -107,7 +107,7 @@
         </div>
       </section>
       <section
-        class="right-sidebar sidebar-common"
+        class="right-sidebar sidebar-common flex-col"
       >
         <x-include src="shared/sidebar-right"></x-include>
       </section>

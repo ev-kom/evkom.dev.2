@@ -11,11 +11,6 @@
   max-width: 100%;
 }
 
-.attribution-section li {
-  display: flex;
-  align-items: center;
-}
-
 .attribution-section span {
   padding-right: var(--space-sm);
 }
@@ -51,7 +46,6 @@
   margin-bottom: var(--space-base);
 }
 
-/* Mobile main content */
 @media (max-width: 767px) {
   .main-content-body {
     padding: var(--space-md);

@@ -4,28 +4,32 @@ Retro 2000s-style personal portfolio for Egor Komarov.
 
 ## Features
 
-### Custom SSG & Universal Rendering
+### Hand-Crafted SSG
 
-The site runs on a custom Static Site Generator built in Node.js.
+No webpack. No Vite. Just vibes. Custom Node.js engine renders pages like it's 1999.
 
-- **Unified Pipeline**: The core renderer (`backend/renderer.js`) powers both the live dev server and the production build.
-- **Recursive Composition**: Supports nesting partials using `<x-include>` tags.
-- **Hybrid Rendering**: Components render statically by default but can use `<x-dynamic>` for runtime updates.
+- **Unified Pipeline**: One renderer rules them all—dev and prod
+- **Recursive Includes**: `<x-include>` nests partials like Russian dolls
+- **Hybrid Rendering**: Static by default, `<x-dynamic>` when you need it live
 
-### Retro UI
+### Web 1.0 Aesthetic
 
-- **No Frameworks**: Pure HTML and CSS. No React, Vue, or Tailwind.
-- **Systematic Styling**: Use `variables.css` for consistent styling (fonts, colors, borders) instead of hardcoded values.
-- **Pixelated Assets**: Uses 88x31 buttons and dithering effects.
+Built different. Built better. Built without npm installing half the internet.
 
-### Guestbook Security
+- **Zero Frameworks**: Pure HTML, CSS, JS. The holy trinity
+- **Pixel Perfect**: 88x31 buttons, dithered GIFs, `Space Mono` everywhere
+- **CSS Variables**: No magic numbers—everything lives in `variables.css`
 
-A spam-resistant commenting system.
+### Security
 
-1.  **Gate**: Generates a Cloudflare Turnstile token on the client.
-2.  **Session**: Server validates Turnstile and issues a signed Session Token.
-3.  **Submission**: Message submission requires the encrypted session token.
-4.  **Verification**: Uses constant-time signature verification to prevent timing attacks.
+Multi-layered protection for the guestbook:
+
+- **Captcha**: Cloudflare Turnstile gate before form access
+- **Session Tokens**: HMAC-signed, salted, 10min TTL with constant-time verification
+- **Rate Limiting**: 50 requests per 15 minutes on `/api`
+- **Input Validation**: Zod schemas strip unknown keys (anti-prototype pollution)
+- **Size Limits**: Name ≤30 chars, message ≤2000 chars
+- **XSS Prevention**: Auto-escaping via `validator.escape()` on storage and render
 
 ## Approach
 

@@ -10,7 +10,7 @@
     "build": "node build.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Egor Komarov",
   "license": "ISC",
   "dependencies": {
     "express": "^5.2.1",

@@ -18,17 +18,17 @@
   <body>
     <header><x-include src="shared/header"></x-include></header>
     <div class="container">
-      <section class="left-sidebar sidebar-common">
+      <section class="left-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content">
+      <section class="main-content flex-col">
         <section class="main-content-body">
           <img
             class="main-content-body-img"
             src="egor_compressed_for_web.jpeg"
             alt="Egor Komarov"
           />
-          <p>
+          <p class="leading-loose">
             I'm Egor, a Java software engineer
             <img
               class="inline-gif"
@@ -37,7 +37,7 @@
             />
             with a passion for the craft.
           </p>
-          <p>
+          <p class="leading-loose">
             This site is my digital playground, hand-crafted with Node.js, pure
             HTML/CSS, and Vanilla JavaScript. No frameworks, no bloat—just pure
             web standards and retro vibes.
@@ -47,7 +47,7 @@
           <x-include src="shared/footer"></x-include>
         </div>
       </section>
-      <section class="right-sidebar sidebar-common">
+      <section class="right-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-right"></x-include>
       </section>
     </div>

@@ -7,17 +7,6 @@
   text-align: center;
 }
 
-/* Shared flex row layout for sidebar items */
-.sidebar-link-item,
-.guestbook-item,
-.best-viewed-item {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
 .sidebar-link-item {
   padding-bottom: var(--space-md);
 }
@@ -78,7 +67,6 @@
     gap: var(--space-base);
   }
 
-  /* Hide empty placeholder divs on mobile */
   .sidebar-link-item > div:empty,
   .guestbook-item > div:empty,
   .best-viewed-item > div:empty {

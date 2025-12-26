@@ -20,13 +20,13 @@
   <body>
     <header><x-include src="shared/header"></x-include></header>
     <div class="container">
-      <section class="left-sidebar sidebar-common">
+      <section class="left-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content">
+      <section class="main-content flex-col">
         <section class="main-content-body cv-container">
           <div class="cv-header">
-            <div class="cv-title-container">
+            <div class="cv-title-container flex-gap">
               <h2>Egor Komarov</h2>
               <span class="retro-mail-text">komarovev91@gmail.com</span>
               <a
@@ -37,13 +37,13 @@
                 <img
                   src="gifs/message_envelope_open-0.gif"
                   alt="Email"
-                  class="retro-icon"
+                  class="retro-icon icon-xxs"
                 />
               </a>
             </div>
             <p>
-              Full Stack Software Engineer | Java Backend Engineer with Frontend
-              & Mobile Experience
+              Java Backend Expert experienced in Frontend & Mobile | Full Stack
+              Software Engineer
             </p>
           </div>
 
@@ -51,37 +51,25 @@
             <p>
               Full stack software engineer with 9+ years of experience building
               high-load, distributed, customer-facing systems with a background
-              in nuclear physics. Primarily a Java expert with strong frontend
-              and mobile (Android/iOS) capabilities. Experienced in designing,
-              developing, and maintaining complex systems using Java, Spring
-              Boot, and microservices (REST, Kafka).
+              in nuclear physics. Primarily a Java expert (Java 21) with strong
+              frontend (React JS, JS, TS, CSS, HTML) and mobile (React Native,
+              Android/iOS) capabilities. Comfortable designing and implementing
+              all layers of the stack—from databases and infrastructure to
+              application layers—utilizing Java, Node.js with REST, and Kafka
+              interfaces. Experienced in managing cloud-native environments on
+              AWS, including data sources such as AWS Aurora, Redis, and S3
+              buckets. Skilled at translating complex technical challenges into
+              clear solutions that bridge engineering and business needs.
             </p>
             <ul>
               <li>
-                Comfortable designing and implementing all layers of the stack
-                from database, infrastructure, and inter-system communication to
-                frontend and mobile applications in Java, Node.js, TypeScript,
-                JavaScript, React Native, CSS, HTML, and APIs.
-              </li>
-              <li>
-                Strong backend expertise while curiosity-driven, actively
-                exploring web and mobile development, building React and React
-                Native features such as push notifications for millions of
-                users.
-              </li>
-              <li>
-                Skilled at translating complex technical challenges into clear
-                solutions that bridge engineering and business needs.
-              </li>
-              <li>
-                Fluent in English and Russian, Goethe B1 German, Germany
-                permanent resident.
-              </li>
-              <li>
-                Skills: Full system design and architecture, database design and
-                development, multithreaded, distributed, and high-load systems,
-                microservices, cloud infrastructure, CI/CD, performance
-                optimization.
+                <strong>Proficient with:</strong> Java 21, Spring Boot, React
+                Native, React JS, JavaScript, TypeScript, Kafka, AWS (Aurora,
+                S3), Terraform, CloudFormation, Microservices, LangChain,
+                LangGraph, Datadog, Jenkins, Groovy, Docker, K6 load test,
+                Node.js, FCM, Firebase, Data Lakehouse, Data JPA, MVC,
+                Hibernate, JDBC, Oracle, PostgreSQL, Redis, Zookeeper, Apache
+                Curator, Akka Actor Systems, Akka Streams.
               </li>
             </ul>
           </div>
@@ -90,9 +78,9 @@
 
           <!-- Klarna -->
           <div class="experience-item">
-            <div class="job-header">
+            <div class="job-header flex-between items-baseline flex-wrap">
               <div>
-                <span class="job-title">Software Engineer</span>
+                <span class="job-title">Java Developer</span>
                 <span class="job-company"
                   >@
                   <a href="https://www.klarna.com/" target="_blank">Klarna</a>
@@ -125,19 +113,21 @@
                     >
                     <ul>
                       <li>
-                        <strong>Dynamic SMS Provider Switching</strong>: built
-                        automated switching based on real-time conversion.
+                        <strong>Dynamic SMS Provider Switching</strong>:
+                        Developed an automated system to monitor real-time
+                        conversion and dynamically switch providers.
                         <ul>
                           <li>
-                            Improved session conversion by <strong>1%</strong>,
-                            one of Klarna’s most important metrics, generating a
-                            <strong>multi-million EUR impact</strong>.
+                            Impact: Improved session conversion by
+                            <strong>1%</strong>, resulting in a significant
+                            multi-million EUR revenue uplift across major
+                            markets.
                           </li>
                           <li>
-                            Reduced SMS provider failover from
-                            <strong>30 min to 1 min</strong>, reduced incidents
-                            by <strong>60%</strong>, and ensured zero downtime
-                            during Black Friday.
+                            Reliability: Reduced provider failover from
+                            <strong>30 mins to 1 min</strong>, cut SMS-related
+                            incidents by <strong>60%</strong>, and ensured zero
+                            downtime during Black Friday 2024.
                           </li>
                         </ul>
                       </li>
@@ -154,33 +144,27 @@
                     >
                     <ul>
                       <li>
-                        Responsible for end-to-end push notification
-                        infrastructure.
+                        <strong>Push Infrastructure</strong>: Managed end-to-end
+                        infrastructure, including a Delivery Eligibility Check
+                        that reduced failed deliveries by over
+                        <strong>50%</strong>.
                       </li>
                       <li>
-                        <strong>Delivery Eligibility Check</strong>: reduced
-                        failed deliveries by ~<strong>50%</strong> by sending
-                        pushes only to valid devices (app installed + push
-                        enabled).
+                        <strong>Braze Migration</strong>: Migrated marketing
+                        pushes in-house by updating React Native Klarna App code
+                        to send callbacks directly to Lakehouse.
                         <ul>
                           <li>
-                            Enabled targeted marketing campaigns and
-                            segmentation using delivery eligibility data.
+                            Impact: Achieved substantial monthly operational
+                            savings while tracking <strong>30M+</strong> monthly
+                            callbacks for <strong>65M+</strong> devices.
                           </li>
                         </ul>
                       </li>
                       <li>
-                        <strong>Braze Migration Support</strong>: added missing
-                        features/callbacks to move push delivery from Braze to
-                        in-house platform. Integrated tracking
-                        (delivered/opened) across React Native Klarna App, iOS,
-                        Android for <strong>65M+ devices</strong>, saving
-                        hundreds of thousands EUR/month.
-                      </li>
-                      <li>
-                        <strong>Silent Push</strong>: added channel for iOS
-                        silent pushes (Android data messages) and built silent
-                        pushes handler in React Native Klarna App.
+                        <strong>Silent Push</strong>: Architected a separate
+                        channel for iOS silent pushes (Remote Device Login) and
+                        built the handler in React Native.
                       </li>
                     </ul>
                   </li>
@@ -201,11 +185,16 @@
                     >
                     <ul>
                       <li>
-                        <strong>Rescheduling Logic</strong>: automated delivery
-                        within legally allowed time windows globally, ensuring
-                        <strong>100% compliance</strong> in the US (<strong
-                          >1M+ messages/year</strong
-                        >).
+                        <strong>Rescheduling Logic</strong>: Engineered a
+                        pre-send validation service to automatically reschedule
+                        communications sent outside legal time windows.
+                        <ul>
+                          <li>
+                            Impact: Ensured <strong>100%</strong> legal
+                            compliance in the US by rescheduling
+                            <strong>1.5M+</strong> messages annually.
+                          </li>
+                        </ul>
                       </li>
                     </ul>
                   </li>
@@ -213,29 +202,33 @@
                   <li>
                     <strong>Maintenance & Reliability</strong>:
                     <ul>
-                      <li>On-call ownership of platform stability.</li>
                       <li>
-                        <strong>Kafka Cluster Usage Optimization</strong>: cut
-                        TCP connections 99.5%, lowering costs by 20%.
+                        <strong>Cloud Infrastructure</strong>: Managed and
+                        maintained high-availability Comms Platform resources on
+                        AWS, including Aurora PostgreSQL, Redis, and S3 buckets.
                       </li>
                       <li>
-                        <strong>CI/CD Standardization</strong>: Developed
-                        structured Jenkins declarative pipelines, cutting deploy
-                        time by <strong>20%</strong> and improving release
-                        stability.
+                        <strong>Kafka Optimization</strong>: Identified and
+                        resolved a massive connection spike, reducing TCP
+                        traffic by <strong>99.5%</strong> and significantly
+                        lowering regional Kafka costs.
                       </li>
                       <li>
-                        <strong>Performance Testing</strong>: introduced k6 and
-                        ran spike (<strong>600 req/s</strong>), load (<strong
-                          >200 req/s</strong
-                        >), and overload tests.
+                        <strong>Performance Testing</strong>: Introduced k6 to
+                        the team, executing spike (<strong>600 req/s</strong>)
+                        and load tests to guarantee platform stability.
+                      </li>
+                      <li>
+                        <strong>CI/CD</strong>: Standardized Jenkins declarative
+                        pipelines, reducing deployment times by
+                        <strong>20%</strong>.
                       </li>
                     </ul>
                   </li>
                 </ul>
               </div>
             </div>
-            <div class="job-tags">
+            <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">JAVA</span>
               <span class="job-tag">KAFKA</span>
               <span class="job-tag">SPRING BOOT</span>
@@ -264,7 +257,7 @@
 
           <!-- Gridfore -->
           <div class="experience-item">
-            <div class="job-header">
+            <div class="job-header flex-between items-baseline flex-wrap">
               <div>
                 <span class="job-title">Java Developer</span>
                 <span class="job-company"
@@ -278,30 +271,30 @@
             </div>
             <span class="job-location">Moscow, Russia</span>
             <p class="job-summary">
-              Partnering with Accenture, Gridfore provides a platform for
-              <strong>real-time big data analysis</strong> and decision making
-              for <strong>banking</strong> and <strong>fintech</strong>.
+              Contracted via Gridfore LLC provides a platform for real-time big
+              data analysis and decision making for banking and fintech.
             </p>
             <div class="job-description">
               <ul>
                 <li>
-                  Contributed to the development of the distributed,
-                  <strong>high-load</strong> in-memory data management engine
-                  (processing <strong>500,000 records/sec</strong>) and
-                  implemented reactive ETL modules using
-                  <strong>Akka Actor System</strong> &
-                  <strong>Akka Streams</strong>.
+                  <strong>High-Load Engineering</strong>: Developed a
+                  distributed in-memory ETL data engine processing
+                  <strong>500,000 records/sec</strong> using Akka Actor System
+                  and Akka Streams.
                 </li>
                 <li>
-                  Built the platform web interface using
-                  <strong>React JS</strong> with <strong>Redux</strong> for
-                  monitoring cluster state and designed a custom
-                  <strong>Groovy</strong>-based DSL module for user-defined
-                  logic.
+                  <strong>Web Monitoring</strong>: Built the platform interface
+                  with React JS and Redux to provide real-time visibility into
+                  cluster states.
+                </li>
+                <li>
+                  <strong>Performance Engineering</strong>: Improved platform
+                  throughput by <strong>20x</strong> through low-level profiling
+                  with YourKit and benchmarking with JMH.
                 </li>
               </ul>
             </div>
-            <div class="job-tags">
+            <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">JAVA</span>
               <span class="job-tag">AKKA</span>
               <span class="job-tag">SPRING BOOT</span>
@@ -317,40 +310,34 @@
 
           <!-- Stealth Startup -->
           <div class="experience-item">
-            <div class="job-header">
+            <div class="job-header flex-between items-baseline flex-wrap">
               <div>
-                <span class="job-title">Lead Developer (Part-time)</span>
+                <span class="job-title">Full Stack Developer</span>
                 <span class="job-company">@ Stealth Startup</span>
               </div>
               <span class="job-date">Mar 2021 - Mar 2022</span>
             </div>
             <span class="job-location">Atlanta, GA, USA</span>
             <p class="job-summary">
-              A startup focused on changing recruitment by creating an intuitive
-              experience for candidates and companies.
+              This startup is changing the way companies recruit and how
+              candidates interact with job applications by creating a simple,
+              intuitive experience that caters to the needs of all involved
+              parties.
             </p>
 
             <div class="job-description">
               <ul>
                 <li>
-                  One of the lead developers on the project, responsible for
-                  overall system architecture, design, and development.
+                  Designed a scalable recruitment platform using Golang and
+                  PostgreSQL on AWS.
                 </li>
                 <li>
-                  Built core system with golang, gorm, and postgres on the
-                  backend for highly scalable and efficient resource utilization
-                  along with container-based deployment on AWS
-                </li>
-                <li>
-                  Developed frontend with React and
-                  <a href="https://mui.com/" target="_blank">Material UI</a>.
-                  (MUI) and leveraged Auth0, Stripe, and SendGrid for
-                  authentication, payment processing, and email sending,
-                  respectively
+                  Developed frontend with React and Material UI (MUI) with Auth0
+                  and Stripe integrations.
                 </li>
               </ul>
             </div>
-            <div class="job-tags">
+            <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">GOLANG</span>
               <span class="job-tag">REACT JS</span>
               <span class="job-tag">AWS</span>
@@ -361,7 +348,7 @@
 
           <!-- AT Consulting -->
           <div class="experience-item">
-            <div class="job-header">
+            <div class="job-header flex-between items-baseline flex-wrap">
               <div>
                 <span class="job-title">Oracle CRM Developer</span>
                 <span class="job-company"
@@ -380,12 +367,12 @@
             <div class="job-description">
               <ul>
                 <li>
-                  Developed and maintained the Oracle-based CRM system for the
-                  Banking Services.
+                  Maintained Oracle-based CRM systems for banking services using
+                  PL/SQL and JavaScript.
                 </li>
               </ul>
             </div>
-            <div class="job-tags">
+            <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">JAVASCRIPT</span>
               <span class="job-tag">PL/SQL</span>
               <span class="job-tag">ORACLE DB</span>
@@ -395,7 +382,7 @@
 
           <!-- VNIIAES -->
           <div class="experience-item">
-            <div class="job-header">
+            <div class="job-header flex-between items-baseline flex-wrap">
               <div>
                 <span class="job-title">Engineer</span>
                 <span class="job-company"
@@ -422,7 +409,7 @@
                 </li>
               </ul>
             </div>
-            <div class="job-tags">
+            <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">C#</span>
               <span class="job-tag">CUDA</span>
               <span class="job-tag">GPU COMPUTING</span>
@@ -433,7 +420,30 @@
           <div class="section-title">EDUCATION</div>
 
           <div class="experience-item">
-            <div class="job-header">
+            <div class="job-header flex-between items-baseline flex-wrap">
+              <div>
+                <span class="job-title">Klarna Generative AI Academy</span>
+              </div>
+              <span class="job-date">Dec 2024</span>
+            </div>
+            <div class="job-description education">
+              <ul>
+                <li>
+                  <strong>Certification</strong>: Completed Module 1, covering
+                  LLM fundamentals, prompt engineering (zero-shot,
+                  chain-of-thought), and evaluation frameworks.
+                </li>
+                <li>
+                  <strong>AI Orchestration</strong>: Leveraged LangChain and
+                  LangGraph to design and implement agentic workflows and
+                  LLM-powered features within the Klarna ecosystem.
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="experience-item">
+            <div class="job-header flex-between items-baseline flex-wrap">
               <div>
                 <span class="job-title">Nuclear Physics and Technologies</span>
               </div>
@@ -447,7 +457,7 @@
             <div class="job-description education">
               Masters Degree. Grade: 4.8/5.0
             </div>
-            <div class="job-tags">
+            <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">C#</span>
               <span class="job-tag">CUDA</span>
               <span class="job-tag">MATLAB</span>
@@ -466,7 +476,7 @@
           <x-include src="shared/footer"></x-include>
         </div>
       </section>
-      <section class="right-sidebar sidebar-common">
+      <section class="right-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-right"></x-include>
       </section>
     </div>

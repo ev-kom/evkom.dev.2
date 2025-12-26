@@ -22,10 +22,10 @@
   <body>
     <header><x-include src="shared/header"></x-include></header>
     <div class="container">
-      <section class="left-sidebar sidebar-common">
+      <section class="left-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content">
+      <section class="main-content flex-col">
         <section class="main-content-body main-content-body-guestbook">
           <x-dynamic src="guestbook/content"></x-dynamic>
         </section>
@@ -33,7 +33,7 @@
           <x-include src="shared/footer"></x-include>
         </div>
       </section>
-      <section class="right-sidebar sidebar-common">
+      <section class="right-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-right"></x-include>
       </section>
     </div>

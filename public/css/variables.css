@@ -80,6 +80,7 @@
   --line-height-tight: 1.25;
   --line-height-normal: 1.5;
   --line-height-relaxed: 1.6;
+  --line-height-loose: 2;
 
   /* Border Widths */
   --border-width: 1px;
