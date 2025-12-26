@@ -62,7 +62,7 @@
 .message-item {
   margin: 0;
   padding: var(--space-base) 0;
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: var(--border-width) solid var(--color-border-light);
   font-size: var(--text-sm);
   width: 100%;
   display: block;
@@ -125,50 +125,190 @@
   margin: 0;
 }
 
-.form-group-captcha {
-  margin: 0 !important;
+/* Terminal-style Security Dialog */
+/* Terminal-style Security Dialog */
+.win-dialog.terminal-gate-dialog {
+  background-color: var(--pixel-grey-1);
+  border-top: var(--border-width-thick) solid var(--color-win-highlight);
+  border-left: var(--border-width-thick) solid var(--color-win-highlight);
+  border-right: var(--border-width-thick) solid var(--color-border);
+  border-bottom: var(--border-width-thick) solid var(--color-border);
+  box-shadow: var(--space-xxs) var(--space-xxs) 0 var(--color-win-shadow);
+
+  /* Force override of global .win-dialog constraints */
+  width: var(--terminal-min-width-desktop);
+  min-width: var(--terminal-min-width-desktop);
+  min-height: var(--terminal-min-height-desktop);
+  max-width: none;
+
+  padding: var(--space-xxs);
+  display: flex;
+  flex-direction: column;
 }
 
-.cf-turnstile-wrapper {
-  position: absolute;
-  width: 0;
-  height: 0;
-  overflow: hidden;
+.win-title-bar.terminal-title-bar {
+  background: var(--color-win-blue-light);
+  height: var(--text-lg);
+  padding: var(--space-xxs) var(--space-xxs) var(--space-xxs) var(--space-xs);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.loading-text,
-.error-text {
-  padding: var(--space-sm) 0;
-  font-style: italic;
-  color: var(--color-muted);
-  display: inline-block;
-  position: relative;
+.win-title-text.terminal-title {
+  color: var(--color-bg);
+  font-weight: bold;
+  font-family: var(--font-family);
+  text-transform: none;
+  font-size: var(--text-xxs);
+  letter-spacing: normal;
 }
 
-.loading-text::after {
-  content: '';
-  animation: dots var(--anim-duration-normal) var(--anim-steps-loading) infinite;
-  position: absolute;
-  left: 100%;
-  width: var(--loading-dots-width);
+.win-close-btn.terminal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--pixel-grey-1);
+  color: var(--color-border);
+  border-top: var(--border-width) solid var(--color-win-highlight);
+  border-left: var(--border-width) solid var(--color-win-highlight);
+  border-right: var(--border-width) solid var(--color-win-shadow);
+  border-bottom: var(--border-width) solid var(--color-win-shadow);
+  width: var(--text-sm);
+  height: var(--text-sm);
+  font-size: var(--text-xxs);
+  padding: 0;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.terminal-content-wrapper {
+  background-color: var(--color-border);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-body {
+  padding: var(--space-sm);
+  background-color: var(--color-border);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminal-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  align-items: flex-start;
+  width: 100%;
+}
+
+.terminal-line {
+  color: var(--pixel-grey-1);
+  width: 100%;
   text-align: left;
+  font-size: var(--text-base);
+  line-height: var(--terminal-line-height);
+  opacity: 1;
 }
 
-@keyframes dots {
-  0%,
-  20% {
-    content: '';
+.terminal-alert {
+  color: var(--color-bg);
+  font-weight: bold;
+  text-align: center;
+  width: 100%;
+  margin-bottom: var(--space-xs);
+  font-size: var(--text-lg);
+}
+
+.submit-btn.terminal-btn {
+  background-color: var(--pixel-grey-1);
+  color: var(--color-border);
+  border-top: var(--border-width) solid var(--color-bg);
+  border-left: var(--border-width) solid var(--color-bg);
+  border-right: var(--border-width) solid var(--color-win-shadow);
+  border-bottom: var(--border-width) solid var(--color-win-shadow);
+  font-size: var(--text-xxs);
+  padding: var(--space-xxs) var(--space-sm);
+  cursor: pointer;
+}
+
+/* Terminal Interactive Input */
+.terminal-input-field {
+  background: transparent;
+  border: none;
+  color: var(--color-bg);
+  font-family: var(--font-family);
+  font-size: var(--text-base);
+  outline: none;
+  width: 0;
+  text-transform: uppercase;
+  caret-color: transparent;
+  display: inline-block;
+  vertical-align: baseline;
+  padding: 0;
+  margin: 0;
+}
+
+.terminal-cursor {
+  color: var(--color-bg);
+  font-size: var(--text-base);
+  animation: terminal-blink var(--anim-duration-terminal) step-end infinite;
+  display: inline;
+  vertical-align: baseline;
+  margin-left: var(--terminal-cursor-margin);
+}
+
+/* Retro Scanner Integration */
+.retro-scan-container {
+  margin: var(--space-md) auto;
+  position: relative;
+  border: none;
+  background-color: var(--color-border);
+  padding: 0;
+  width: fit-content;
+  max-width: 100%;
+  overflow: hidden;
+  align-self: center;
+}
+
+.cf-widget-wrapper {
+  background-color: var(--color-border);
+  line-height: 0; /* Fix bottom stripe */
+  display: block;
+}
+
+#cf-widget-container {
+  display: block;
+  filter: grayscale(1) contrast(1.2) brightness(1.2);
+}
+
+.scanline-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    var(--color-bg-transparent) 50%,
+    var(--terminal-scanline-color) 50%
+  );
+  background-size: 100% var(--terminal-scanline-size);
+  pointer-events: none;
+  z-index: 10;
+  opacity: var(--terminal-overlay-opacity);
+}
+
+@keyframes terminal-blink {
+  50% {
+    opacity: 0;
   }
-  40% {
-    content: '.';
-  }
-  60% {
-    content: '..';
-  }
-  80%,
-  100% {
-    content: '...';
-  }
+}
+
+.text-center {
+  text-align: center;
 }
 
 /* Mobile Guestbook */
@@ -190,5 +330,33 @@
   .message-header {
     flex-wrap: wrap;
     gap: var(--space-sm);
+  }
+
+  /* MS-DOS Terminal Mobile Reduction */
+  .win-dialog.terminal-gate-dialog {
+    width: auto;
+    min-width: var(--terminal-min-width-mobile);
+    max-width: var(--terminal-max-width-mobile);
+    min-height: var(--terminal-min-height-mobile);
+  }
+  .terminal-line,
+  .terminal-input-field,
+  .terminal-cursor,
+  .win-title-text.terminal-title,
+  .submit-btn.terminal-btn {
+    font-size: var(--text-xs);
+  }
+  .terminal-alert {
+    font-size: var(--text-sm);
+  }
+}
+
+/* Desktop Expansion (Large & Robust) */
+@media (min-width: 768px) {
+  .win-dialog.terminal-gate-dialog {
+    width: var(--terminal-min-width-desktop);
+    min-width: var(--terminal-min-width-desktop);
+    min-height: var(--terminal-min-height-desktop);
+    max-width: none;
   }
 }

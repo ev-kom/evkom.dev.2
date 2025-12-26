@@ -23,6 +23,8 @@
   --color-border: #000000;
   --color-border-light: #d8d8d8;
   --color-border-lighter: #ccc;
+  --color-black: #000000;
+  --color-white: #ffffff;
   --color-bg: #ffffff;
   --color-bg-light: #f0f0f0;
   --color-bg-sidebar: #d8d8d8;
@@ -101,13 +103,23 @@
   --sidebar-width: 20%;
   --content-max-width: 800px;
   --dialog-width: 400px;
-  --win-mobile-max-width: 300px;
-  --win-dialog-min-width: 300px;
-  --win-dialog-min-height: 200px;
+  --terminal-min-width-desktop: 400px;
+  --terminal-min-height-desktop: 220px;
+  --terminal-min-width-mobile: 220px;
+  --terminal-max-width-mobile: 95%;
+  --terminal-min-height-mobile: 200px;
 
   /* Animation */
   --anim-duration-normal: 1.5s;
+  --anim-duration-terminal: 1s;
   --anim-steps-loading: steps(5, end);
+
+  /* Terminal UI Specifics */
+  --terminal-cursor-margin: 0.1ch;
+  --terminal-line-height: 1.2;
+  --terminal-scanline-color: rgba(0, 0, 0, 0.15);
+  --terminal-scanline-size: 3px;
+  --terminal-overlay-opacity: 0.7;
 
   /* Form Elements */
   --form-label-width: 128px;

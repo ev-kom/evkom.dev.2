@@ -1,31 +1,3 @@
-const LOADING_PHRASES = [
-  'Initiating handshake sequence',
-  'Synchronizing remote port',
-  'Allocating system buffers',
-  'Bypassing secure firewall',
-  'Pinging server matrix',
-];
-
-let loadingInterval = null;
-
-function startLoadingAnimation() {
-  const textEl = document.querySelector('#gate-message-loading .loading-text');
-  if (!textEl) return;
-
-  let index = 0;
-  loadingInterval = setInterval(() => {
-    index = (index + 1) % LOADING_PHRASES.length;
-    textEl.textContent = LOADING_PHRASES[index];
-  }, 3000);
-}
-
-function stopLoadingAnimation() {
-  if (loadingInterval) {
-    clearInterval(loadingInterval);
-    loadingInterval = null;
-  }
-}
-
 window.onloadTurnstileCallback = function () {
   const container = document.getElementById('cf-widget-container');
   if (!container) return;
@@ -35,16 +7,52 @@ window.onloadTurnstileCallback = function () {
     return;
   }
 
-  startLoadingAnimation();
+  // Detect mobile/touch for compact widget sizing
+  const isMobile = window.innerWidth < 768;
 
   turnstile.render('#cf-widget-container', {
     sitekey: siteKey,
     callback: onTurnstileSuccess,
     'error-callback': onTurnstileError,
     'expired-callback': onTurnstileError,
-    size: 'invisible',
+    size: isMobile ? 'compact' : 'normal',
+    appearance: 'always',
+    theme: 'dark',
   });
 };
+
+function initTerminalRetry() {
+  const input = document.getElementById('terminal-retry-input');
+  if (!input) return;
+
+  input.style.width = '0ch'; // Initial width for cursor placement
+
+  // Ensure input is focused
+  input.focus();
+  document.addEventListener('click', () => input.focus());
+
+  input.addEventListener('input', () => {
+    input.style.width = input.value.length + 'ch';
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      const val = input.value.toUpperCase();
+      if (val === 'Y') {
+        location.reload();
+      } else if (val === 'N') {
+        window.location.href = '/';
+      } else {
+        input.value = ''; // Reset if invalid
+      }
+    }
+  });
+
+  // Keep input focused even on blur
+  input.addEventListener('blur', () => {
+    setTimeout(() => input.focus(), 100);
+  });
+}
 
 window.replaceDocument = function (html, sessionToken) {
   const parser = new DOMParser();
@@ -86,6 +94,9 @@ window.replaceDocument = function (html, sessionToken) {
     if (window.initGuestbook) {
       window.initGuestbook();
     }
+
+    // After replaceDocument is done, check for retry input
+    initTerminalRetry();
   } else {
     // Fallback to full page refresh if structure is different
     window.location.reload();
@@ -93,7 +104,6 @@ window.replaceDocument = function (html, sessionToken) {
 };
 
 function onTurnstileError() {
-  stopLoadingAnimation();
   // Fetch server-rendered error page
   fetch('/guestbook.html', {
     method: 'POST',
@@ -111,7 +121,6 @@ function onTurnstileError() {
 }
 
 function onTurnstileSuccess(token) {
-  stopLoadingAnimation();
   fetch('/guestbook.html', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

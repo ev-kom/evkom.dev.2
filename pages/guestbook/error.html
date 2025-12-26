@@ -3,24 +3,30 @@
   <h2>Guestbook</h2>
 </div>
 
-<div class="win-dialog">
-  <div class="win-title-bar">
-    <span class="win-title-text">Guestbook Service</span>
-    <a href="/" class="win-close-btn" aria-label="Close">X</a>
+<div class="win-dialog terminal-gate-dialog" id="error-dialog">
+  <div class="win-title-bar terminal-title-bar">
+    <div class="win-title-text terminal-title">MS-DOS Prompt</div>
+    <a href="/" class="win-close-btn terminal-close" aria-label="Close">X</a>
   </div>
-  <div class="win-content-wrapper">
-    <div class="win-content">
-      <div class="win-icon-container">
-        <img src="/gifs/restrict-1.gif" alt="" class="pixel-art" />
+  <div class="win-content-wrapper terminal-content-wrapper flex-col">
+    <div class="terminal-body">
+      <div class="terminal-section">
+        <p class="terminal-alert">!! CONNECTION TERMINATED !!</p>
+        <p class="terminal-line">> ERROR: HANDSHAKE_FAILED</p>
+        <p class="terminal-line">> STATUS: ACCESS_DENIED (0x80070005)</p>
+        <p class="terminal-line">
+          > RETRY AUTHENTICATION? (Y/N):
+          <input
+            type="text"
+            id="terminal-retry-input"
+            class="terminal-input-field"
+            maxlength="1"
+            autofocus
+            autocomplete="off"
+            spellcheck="false"
+          /><span class="terminal-cursor">_</span>
+        </p>
       </div>
-      <div class="win-message">
-        <p><strong>Connection Terminated</strong></p>
-        <p>The secure handshake protocol was interrupted.</p>
-        <p>Access Denied (0x80070005).</p>
-      </div>
-    </div>
-    <div class="win-buttons">
-      <a href="/guestbook.html" class="win-btn">Retry</a>
     </div>
   </div>
 </div>

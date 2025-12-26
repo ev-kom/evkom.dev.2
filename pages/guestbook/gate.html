@@ -3,39 +3,45 @@
   <h2>Guestbook</h2>
 </div>
 
-<div class="win-dialog width-auto flex-col">
-  <div class="win-title-bar flex-between">
-    <span class="win-title-text">WINDOWS SECURITY</span>
-    <a href="/" class="win-close-btn" aria-label="Close">X</a>
+<div class="win-dialog terminal-gate-dialog">
+  <div class="win-title-bar terminal-title-bar">
+    <div class="win-title-text terminal-title">MS-DOS Prompt</div>
+    <a href="/" class="win-close-btn terminal-close" aria-label="Close">X</a>
   </div>
-  <div class="win-content-wrapper flex-col">
-    <div class="win-content">
-      <div class="win-icon-container">
-        <img src="gifs/address_book-0.gif" alt="Secure" class="pixel-art" />
+  <div class="win-content-wrapper terminal-content-wrapper flex-col">
+    <div class="terminal-body">
+      <div class="terminal-section">
+        <p class="terminal-alert">TERMINAL ACCESS SYSTEM</p>
+        <p class="terminal-line">> INITIATING SECURE HANDSHAKE...</p>
+        <p class="terminal-line">> STATUS: HANDSHAKING</p>
+        <div class="retro-scan-container">
+          <div class="cf-widget-wrapper">
+            <div id="cf-widget-container" data-sitekey="{{siteKey}}"></div>
+          </div>
+          <div class="scanline-overlay"></div>
+        </div>
       </div>
-      <div class="win-message" id="gate-message-loading">
-        <p><strong>Establishing Secure Connection</strong></p>
-        <p class="loading-text">Initiating handshake sequence</p>
-        <div
-          id="cf-widget-container"
-          class="cf-turnstile-wrapper"
-          data-sitekey="{{siteKey}}"
-        ></div>
-      </div>
-      <div class="win-message" id="gate-message-error" style="display: none">
-        <p><strong>Connection Terminated</strong></p>
-        <p>The secure handshake protocol was interrupted.</p>
-        <p>Access Denied (0x80070005).</p>
+      <div
+        id="gate-message-denied"
+        class="terminal-section"
+        style="display: none"
+      >
+        <p class="terminal-alert">!! CONNECTION TERMINATED !!</p>
+        <p class="terminal-line">
+          THE SECURE HANDSHAKE PROTOCOL WAS INTERRUPTED.
+        </p>
+        <p class="terminal-line">ACCESS DENIED (0x80070005).</p>
+        <div class="flex-center" style="margin-top: var(--space-md)">
+          <button class="submit-btn terminal-btn" onclick="location.reload()">
+            RETRY AUTHENTICATION
+          </button>
+        </div>
       </div>
     </div>
-
-    <div class="win-buttons" id="gate-error-buttons" style="display: none">
-      <a href="/guestbook" class="win-btn">Retry</a>
-    </div>
-
-    <script
-      src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
-      defer
-    ></script>
   </div>
+
+  <script
+    src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+    defer
+  ></script>
 </div>

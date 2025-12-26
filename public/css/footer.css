@@ -9,7 +9,7 @@
   margin-left: var(--space-md);
   margin-right: var(--space-md);
   padding: var(--space-xxs) 0;
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: var(--border-width) solid var(--color-border-light);
 }
 
 .main-content-footer p {
