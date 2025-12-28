@@ -22,6 +22,12 @@
   height: var(--icon-md);
 }
 
+/* Improve touch targets */
+.sidebar-link-item a {
+  padding: 8px 0;
+  display: inline-block;
+}
+
 .guestbook-header {
   display: flex;
   align-items: center;

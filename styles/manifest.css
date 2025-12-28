@@ -1,0 +1,159 @@
+/* Manifest Page Styles */
+
+.attribution-section {
+  font-size: var(--text-base);
+}
+
+.attribution-section ul {
+  padding-left: var(--space-md);
+  list-style-type: none;
+}
+
+.attribution-section li {
+  margin-bottom: var(--space-xs);
+  min-height: var(--touch-target-min);
+}
+
+/* Targeted links */
+.attribution-section a {
+  display: inline-block;
+  color: var(--color-navy);
+  text-decoration: underline;
+}
+
+.attribution-section a:hover {
+  background-color: var(--color-navy);
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.attribution-header {
+  border-bottom: var(--border-width) solid var(--color-border);
+  margin-bottom: var(--space-md);
+  font-size: var(--text-lg);
+  font-weight: bold;
+}
+
+.resource-description {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-left: var(--space-lg);
+  margin-top: calc(var(--space-xxs) * -1);
+  margin-bottom: var(--space-md);
+}
+
+/* Tree View */
+.tree-view {
+  --tree-indent: var(--space-sm);
+  --tree-padding-left: var(--space-lg);
+  --tree-connector-width: var(--space-lg);
+  --tree-item-padding-v: var(--space-xs); /* Desktop spacing */
+  /* Center of the first line: padding-top + half of line-height (1.5em / 2 = 0.75em) */
+  --tree-connector-offset: calc(var(--tree-item-padding-v) + 0.75em);
+}
+
+@media (max-width: 767px) {
+  .tree-view {
+    --tree-item-padding-v: var(--space-xxs); /* Tighter on mobile */
+  }
+}
+
+.tree-view,
+.tree-view ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.tree-view > li {
+  padding-left: 0; /* Flush left desktop */
+}
+
+.tree-view ul {
+  margin-left: var(--tree-indent);
+  padding-left: 0;
+  margin-top: var(--space-xxs);
+}
+
+.tree-view > li > ul {
+  margin-top: 0;
+}
+
+/* Tree Item Layout */
+.tree-view li {
+  position: relative;
+  padding: var(--tree-item-padding-v) 0 var(--tree-item-padding-v)
+    var(--tree-padding-left);
+  box-sizing: border-box;
+  line-height: var(--line-height-normal);
+  margin-bottom: 0;
+}
+
+/* Connectors */
+.tree-view ul li::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--border-width);
+  background-color: var(--color-border);
+}
+
+.tree-view ul li::after {
+  content: '';
+  position: absolute;
+  top: var(--tree-connector-offset);
+  left: 0;
+  width: var(--tree-connector-width);
+  height: var(--border-width);
+  background-color: var(--color-border);
+}
+
+/* Fix for the last item: vertical line should stop at the horizontal connector */
+.tree-view ul li:last-child::before {
+  height: var(--tree-connector-offset);
+  bottom: auto;
+}
+
+/* Link/Text Styles */
+.tree-view a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--color-navy);
+  font-weight: bold;
+}
+
+.tree-view a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+  color: var(--color-navy);
+}
+
+/* Adjustments for nested content (like description) */
+.tree-view .resource-description {
+  display: block;
+  margin-top: var(--space-xs);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  line-height: var(--line-height-normal);
+}
+
+.tree-view .tree-section-header,
+.tree-view > li > a:first-child {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: bold;
+  vertical-align: top;
+}
+
+.tree-view .tree-section-header::after,
+.tree-view > li > a:first-child::after {
+  content: '';
+  display: block;
+  width: var(--border-width);
+  height: var(--space-md);
+  background-color: var(--color-border);
+  margin-top: var(--space-xxs);
+  margin-bottom: 0;
+  margin-left: var(--tree-indent);
+}

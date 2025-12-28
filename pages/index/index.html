@@ -5,7 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>evkom.dev</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bundled.css?v=final" />
+    <x-inline-css src="variables.css"></x-inline-css>
+    <x-inline-css src="base.css"></x-inline-css>
+    <x-inline-css src="layout.css"></x-inline-css>
+    <x-inline-css src="main-content.css"></x-inline-css>
+    <link rel="preload" href="/sky_tile.gif" as="image" fetchpriority="high" />
+    <link
+      rel="preload"
+      href="/fonts/SpaceMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/SpaceMono-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <meta
       name="description"
       content="Egor Komarov - Senior Java Software Engineer. Specialized in high-load distributed systems, retro web design, and Agentic AI. Welcome to my digital playground."
@@ -22,6 +40,10 @@
           <img
             class="main-content-body-img"
             src="egor_compressed_for_web.webp"
+            srcset="
+              egor_compressed_for_web.webp    1x,
+              egor_compressed_for_web@2x.webp 2x
+            "
             alt="Egor Komarov"
             fetchpriority="high"
             loading="eager"

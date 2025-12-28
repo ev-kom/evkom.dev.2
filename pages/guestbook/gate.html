@@ -1,5 +1,11 @@
 <div class="guestbook-header-container flex-gap">
-  <img src="gifs/guestbook.gif" alt="Guestbook GIF" />
+  <img
+    src="gifs/guestbook.gif"
+    alt="Guestbook GIF"
+    width="37"
+    height="30"
+    class="pixel-art"
+  />
   <h2>Guestbook</h2>
 </div>
 
@@ -13,14 +19,17 @@
       <div class="terminal-section">
         <p class="terminal-alert">TERMINAL ACCESS SYSTEM</p>
         <p class="terminal-line">> INITIATING SECURE HANDSHAKE...</p>
-        <p class="terminal-line">> STATUS: HANDSHAKING</p>
-        <div class="retro-scan-container">
+        <p class="terminal-line">> STATUS: HANDSHAKING...</p>
+
+        <!-- Widget Container -->
+        <div id="widget-wrapper" class="retro-scan-container">
           <div class="cf-widget-wrapper">
             <div id="cf-widget-container" data-sitekey="{{siteKey}}"></div>
           </div>
           <div class="scanline-overlay"></div>
         </div>
       </div>
+
       <div
         id="gate-message-denied"
         class="terminal-section"
@@ -40,8 +49,14 @@
     </div>
   </div>
 
-  <script
-    src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
-    defer
-  ></script>
+  <script>
+    // Auto-init Turnstile
+    (function () {
+      const script = document.createElement('script');
+      script.src =
+        'https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  </script>
 </div>

@@ -219,7 +219,7 @@
   font-weight: bold;
   text-align: center;
   width: 100%;
-  margin-bottom: var(--space-xs);
+  margin-bottom: 0;
   font-size: var(--text-lg);
 }
 
@@ -250,6 +250,8 @@
   vertical-align: baseline;
   padding: 0;
   margin: 0;
+  line-height: inherit;
+  height: auto;
 }
 
 .terminal-cursor {

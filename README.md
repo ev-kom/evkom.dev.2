@@ -1,51 +1,29 @@
 # evkom.dev
 
-Retro 2000s-style personal portfolio for Egor Komarov.
+Retro 2000s-style personal portfolio for Egor Komarov. Built with a custom Node.js SSG and zero frameworks.
 
 ## Features
 
 ### Hand-Crafted SSG
 
-No webpack. No Vite. Just vibes. Custom Node.js engine renders pages like it's 1999.
-
-- **Unified Pipeline**: One renderer rules them all—dev and prod
-- **Recursive Includes**: `<x-include>` nests partials like Russian dolls
-- **Hybrid Rendering**: Static by default, `<x-dynamic>` when you need it live
+- **Unified Pipeline**: One renderer handles both JIT development and static production builds.
+- **Recursive Includes**: `<x-include>` allows nesting partials like Russian dolls.
+- **Hybrid Rendering**: Static by default, using `<x-dynamic>` for live server-side components.
+- **Zero Render-Blocking**: Essential CSS and JS are automatically inlined and minified.
 
 ### Web 1.0 Aesthetic
 
-Built different. Built better. Built without npm installing half the internet.
+- **Pure Trinity**: Zero modern frameworks—just standard HTML, CSS, and Vanilla JS.
+- **Dithered & Pixelated**: 88x31 buttons, dithered GIFs, and `Space Mono` typography.
+- **Unified Design**: No magic numbers; all styles derived from `variables.css`.
 
-- **Zero Frameworks**: Pure HTML, CSS, JS. The holy trinity
-- **Pixel Perfect**: 88x31 buttons, dithered GIFs, `Space Mono` everywhere
-- **CSS Variables**: No magic numbers—everything lives in `variables.css`
+### Multi-Layer Security
 
-### Security
-
-Multi-layered protection for the guestbook:
-
-- **Captcha**: Cloudflare Turnstile gate before form access
-- **Session Tokens**: HMAC-signed, salted, 10min TTL with constant-time verification
-- **Rate Limiting**: 50 requests per 15 minutes on `/api`
-- **Input Validation**: Zod schemas strip unknown keys (anti-prototype pollution)
-- **Size Limits**: Name ≤30 chars, message ≤2000 chars
-- **XSS Prevention**: Auto-escaping via `validator.escape()` on storage and render
-
-## Approach
-
-### Philosophy
-
-This project avoids modern bundlers and frameworks to maintain control and simplicity.
-
-- **Performance**: Fast load times.
-- **Transparency**: No hidden dependencies.
-- **Longevity**: Uses standard web technologies (ESM, CSS3).
-
-### Architecture
-
-- **`backend/`**: Renderer, registries, and security logic.
-- **`pages/`**: Templates (`.html`) and logic (`.server.js`).
-- **`public/`**: Static assets.
+- **Captcha**: Cloudflare Turnstile protection for guestbook entries.
+- **Session Tokens**: Stateless HMAC-signed tokens (10min TTL) with constant-time verification.
+- **Rate Limiting**: Protected `/api` endpoints (50 requests per 15 mins).
+- **Validation**: Zod schemas for strict input sanitization and anti-prototype pollution.
+- **XSS Prevention**: Automatic escaping via `validator.escape()` in both renderer and storage.
 
 ## Setup
 
@@ -55,7 +33,7 @@ This project avoids modern bundlers and frameworks to maintain control and simpl
 
 ### Configuration
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the root:
 
 ```bash
 TURNSTILE_SITE_KEY=your_site_key
@@ -66,16 +44,22 @@ GOOGLE_SHEET_ID=your_sheet_id
 GOOGLE_SHEET_NAME=Sheet1
 ```
 
-### Development
+### Commands
 
-```bash
-npm run dev
-```
+- `npm run dev`: Start dev server with JIT rendering and hot reload (localhost:8000).
+- `npm run build`: Generate static production site in `dist/`.
+- `npm start`: Run production server (serves from `dist/`).
 
-### Build
+## Architecture Patterns
 
-```bash
-npm run build
-```
+### Rendering Pipeline
 
-Output generated in `dist/`.
+The SSG uses a unified renderer (`backend/renderer.js`) that handles recursive includes, dynamic component injection, and automatic minification.
+
+- **Inlining**: Use `<x-inline-css src="file.css">` and `<x-inline-js src="file.js">` to eliminate render-blocking requests.
+
+### Common Tasks
+
+- **Adding a Page**: Create template in `pages/path/index.html` and register in `PAGE_REGISTRY`.
+- **Dynamic Logic**: Register handler in `DYNAMIC_REGISTRY` and embed via `<x-dynamic src="path">`.
+- **Updating Styles**: Use semantic tokens from `styles/variables.css`.

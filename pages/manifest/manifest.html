@@ -5,8 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>evkom.dev - Manifest</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bundled.css?v=final" />
-
+    <x-inline-css src="variables.css"></x-inline-css>
+    <x-inline-css src="base.css"></x-inline-css>
+    <x-inline-css src="layout.css"></x-inline-css>
+    <x-inline-css src="main-content.css"></x-inline-css>
+    <x-inline-css src="manifest.css"></x-inline-css>
+    <link rel="preload" href="/sky_tile.gif" as="image" fetchpriority="high" />
+    <link rel="preload" href="/fonts/SpaceMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/SpaceMono-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <meta
+      name="description"
+      content="Site Map for Egor Komarov's Homepage"
+    />
   </head>
   <body>
     <header><x-include src="shared/header"></x-include></header>
@@ -16,7 +26,7 @@
       >
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content flex-col">
+      <main class="main-content flex-col">
         <section class="main-content-body">
           <h2 class="attribution-header">Manifest</h2>
           <div class="attribution-section">
@@ -26,79 +36,92 @@
 
           <h3 class="attribution-header">Site Map</h3>
           <div class="attribution-section">
-              <ul>
-                <li class="flex-center"><a href="index.html">Home</a></li>
-                <li class="flex-center"><span>├──</span> <a href="cv.html">CV</a></li>
-                <li class="flex-center"><span>├──</span> <a href="{{linkedin}}" target="_blank">Linkedin</a></li>
-                <li class="flex-center"><span>├──</span> <a href="{{github}}" target="_blank">Github</a></li>
-                <li class="flex-center"><span>├──</span> <a href="guestbook.html">Guestbook</a></li>
-                <li class="flex-center"><span>└──</span> <a href="manifest.html">Manifest</a></li>
+              <ul class="tree-view">
+                <li>
+                  <a href="index.html">Home</a>
+                  <ul>
+                    <li><a href="cv.html">CV</a></li>
+                    <li><a href="{{linkedin}}" target="_blank">Linkedin</a></li>
+                    <li><a href="{{github}}" target="_blank">Github</a></li>
+                    <li><a href="guestbook.html">Guestbook</a></li>
+                    <li><a href="manifest.html">Manifest</a></li>
+                  </ul>
+                </li>
               </ul>
           </div>
 
           <h3 class="attribution-header">Resources</h3>
           <div class="attribution-section">
-            <ul class="resources-list">
-              <li class="flex-center"><span>─</span>
-                <img
-                  src="/sky_tile.gif"
-                  alt="Asset icon"
-                  class="attribution-icon"
-                />
-                Background&nbsp;
-                <a
-                  href="{{clouds_wallpaper}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="sidebar-link"
-                  >by WindowsAesthetics</a
-                >
-                &nbsp;/&nbsp;
-                <a
-                  href="{{cc_by_sa}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="sidebar-link"
-                  >CC BY-SA 4.0</a
-                >
-                <div class="resource-description">Used for the tiling sky background.</div>
-              </li>
-              <li class="flex-center"><span>─</span>
-                <a
-                  href="{{cyber_dabamos}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="sidebar-link"
-                  >cyber.dabamos.de</a
-                >
-                <div class="resource-description">Design inspiration for the retro aesthetic.</div>
-              </li>
-              <li class="flex-center"><span>&nbsp;&nbsp;└──</span>
-                <a
-                  href="{{cyber_dabamos_88x31}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="sidebar-link"
-                  >88x31 collection</a
-                >
-                <div class="resource-description">Source for various web badges and GIFs.</div>
-              </li>
-              <li class="flex-center"><span>─</span>
-                <a
-                  href="{{win98icons}}"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="sidebar-link"
-                  >Windows 98 Icons</a
-                >
-                <div class="resource-description">The primary source for pixelated UI icons.</div>
+            <ul class="tree-view">
+                  <li>
+                    <span class="heading-navy tree-section-header">Assets</span>
+                <ul>
+                  <li>
+                    <img
+                      src="/sky_tile.gif"
+                      alt="Asset icon"
+                      class="attribution-icon pixel-art"
+                      width="32"
+                      height="32"
+                    />
+                    Background&nbsp;
+                    <a
+                      href="{{clouds_wallpaper}}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="sidebar-link"
+                      >by WindowsAesthetics</a
+                    >
+                    &nbsp;/&nbsp;
+                    <a
+                      href="{{cc_by_sa}}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="sidebar-link"
+                      >CC BY-SA 4.0</a
+                    >
+                    <div class="resource-description">Used for the tiling sky background.</div>
+                  </li>
+                  <li>
+                    <a
+                      href="{{cyber_dabamos}}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="sidebar-link"
+                      >cyber.dabamos.de</a
+                    >
+                    <div class="resource-description">Design inspiration for the retro aesthetic.</div>
+                    <ul>
+                      <li>
+                         <a
+                          href="{{cyber_dabamos_88x31}}"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          class="sidebar-link"
+                          >88x31 collection</a
+                        >
+                        <div class="resource-description">Source for various web badges and GIFs.</div>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a
+                      href="{{win98icons}}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="sidebar-link"
+                      >Windows 98 Icons</a
+                    >
+                    <div class="resource-description">The primary source for pixelated UI icons.</div>
+                  </li>
+                </ul>
               </li>
             </ul>
         </section>
         <div class="main-content-footer">
           <x-include src="shared/footer"></x-include>
         </div>
-      </section>
+      </main>
       <section
         class="right-sidebar sidebar-common flex-col"
       >

@@ -70,6 +70,7 @@ header h1 {
         var(--color-bg-transparent) 100%
       ),
       url('../sky_tile.gif');
+    margin-bottom: var(--space-xs);
   }
 
   header h1 {

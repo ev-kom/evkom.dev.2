@@ -1,3 +1,5 @@
+/* Main Layout */
+
 .container {
   display: grid;
   grid-template-columns: var(--sidebar-width) 1fr var(--sidebar-width);
@@ -9,13 +11,17 @@
 .sidebar-left {
   grid-area: left;
 }
+
 .main-content {
   grid-area: main;
+  background-color: var(--color-bg);
 }
+
 .sidebar-right {
   grid-area: right;
 }
 
+/* Responsive Grid */
 @media (max-width: 767px) {
   .container {
     grid-template-columns: 1fr;
@@ -26,16 +32,19 @@
   }
 }
 
+/* Shared Sidebar Styles */
 .sidebar-common {
   background-color: var(--color-bg-sidebar);
   border-left: var(--border-width) solid var(--color-border);
   border-right: var(--border-width) solid var(--color-border);
-  padding: var(--space-md);
+  padding: var(--space-lg);
   font-size: var(--text-base);
   color: var(--color-text);
   gap: var(--space-md);
 }
 
-.main-content {
-  background-color: var(--color-bg);
+@media (max-width: 767px) {
+  .sidebar-common {
+    padding: var(--space-sm);
+  }
 }

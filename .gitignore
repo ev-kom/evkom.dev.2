@@ -3,4 +3,3 @@ dist/
 legacy/
 .DS_Store
 .env
-public/css/bundled.css

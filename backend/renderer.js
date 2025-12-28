@@ -4,6 +4,8 @@ import { performance } from 'node:perf_hooks';
 import { parser } from 'posthtml-parser';
 import { render as renderToString } from 'posthtml-render';
 import validator from 'validator';
+import CleanCSS from 'clean-css';
+import { minify as terserMinify } from 'terser';
 import { DYNAMIC_REGISTRY, PAGE_REGISTRY } from './registries.js';
 
 /**
@@ -17,6 +19,8 @@ const RENDER_MODE = Object.freeze({
 
 // DoS Protection: Limit input HTML size (e.g., 5MB)
 const MAX_INPUT_SIZE = 5 * 1024 * 1024;
+
+const cssMinifier = new CleanCSS({ level: 1 });
 
 /**
  * RENDER CONTEXT
@@ -162,6 +166,51 @@ async function resolveInclude({ key, params, context, walker }) {
   }
 }
 
+function minifyCss(css) {
+  const output = cssMinifier.minify(css);
+  return output.styles;
+}
+
+async function minifyJs(js) {
+  try {
+    const result = await terserMinify(js);
+    return result.code;
+  } catch (err) {
+    console.error('[Render Error] JS Minification failed:', err);
+    return js; // Fallback to unminified
+  }
+}
+
+async function resolveInlineCss(src, context) {
+  const childCtx = context.createChild(`CSS:${src}`);
+
+  try {
+    const filePath = path.join(process.cwd(), 'styles', src);
+    const cssContent = await fs.readFile(filePath, 'utf-8');
+    return `<style data-src="${src}">${minifyCss(cssContent)}</style>`;
+  } catch (err) {
+    console.error(`[Render Error] Failed to inline CSS: ${src}`, err);
+    return '';
+  } finally {
+    childCtx.finish();
+  }
+}
+
+async function resolveInlineJs(src, context) {
+  const childCtx = context.createChild(`JS:${src}`);
+
+  try {
+    const filePath = path.join(process.cwd(), 'scripts', src);
+    const jsContent = await fs.readFile(filePath, 'utf-8');
+    return `<script data-src="${src}">${await minifyJs(jsContent)}</script>`;
+  } catch (err) {
+    console.error(`[Render Error] Failed to inline JS: ${src}`, err);
+    return '';
+  } finally {
+    childCtx.finish();
+  }
+}
+
 async function resolveDynamic({ key, params, context, dynamicProvider, mode }) {
   if (!context.canProcess(key)) {
     return '';
@@ -212,6 +261,12 @@ async function walkFull(nodes, params, context) {
         mode: RENDER_MODE.DEVELOPMENT,
       });
     },
+    handleInlineCss: (src) => {
+      return resolveInlineCss(src, context);
+    },
+    handleInlineJs: (src) => {
+      return resolveInlineJs(src, context);
+    },
   });
 }
 
@@ -230,6 +285,12 @@ async function walkStaticOnly(nodes, params, context) {
     },
     handleDynamic: (_key, _p, _ctx, _dynamicProvider, node) => {
       return node;
+    },
+    handleInlineCss: (src) => {
+      return resolveInlineCss(src, context);
+    },
+    handleInlineJs: (src) => {
+      return resolveInlineJs(src, context);
     },
   });
 }
@@ -307,6 +368,14 @@ async function baseWalker(nodes, params, context, actions) {
         dynamicProvider,
         node
       );
+    }
+
+    if (tag === 'x-inline-css') {
+      return await actions.handleInlineCss(attrs.src, params, context, node);
+    }
+
+    if (tag === 'x-inline-js') {
+      return await actions.handleInlineJs(attrs.src, params, context, node);
     }
 
     if (node.content) {

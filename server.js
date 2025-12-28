@@ -3,7 +3,7 @@ import rateLimit from 'express-rate-limit';
 import { writeFile } from 'node:fs/promises';
 import { basename, extname, join } from 'path';
 
-import { generateBundledCss } from './build.js';
+import compression from 'compression';
 import { verifySessionToken } from './backend/captcha.js';
 import { appendGuestbookMessage } from './backend/google-sheets.js';
 import { PAGE_REGISTRY } from './backend/registries.js';
@@ -11,6 +11,9 @@ import { renderDev, renderProd } from './backend/renderer.js';
 import { siteConstants } from './site.config.js';
 
 const app = express();
+
+app.use(compression());
+
 const IS_DEV = process.argv.includes('--dev');
 if (!IS_DEV) {
   console.log = () => {};
@@ -80,6 +83,10 @@ app.use((req, res, next) => {
   if (req.path === '/') {
     return res.redirect('/index.html');
   }
+  // Ignore DevTools/Browser metadata requests to avoid 404 rendering overhead
+  if (req.path.startsWith('/.well-known/')) {
+    return res.status(404).end();
+  }
   next();
 });
 
@@ -124,13 +131,6 @@ app.use(async (req, res, next) => {
 
 // STATIC ASSETS HANDLING
 if (IS_DEV) {
-  // Dynamic CSS Bundling for Dev
-  try {
-    await generateBundledCss(PUBLIC_DIR);
-  } catch (err) {
-    console.error('Initial CSS Bundle Failed:', err);
-  }
-
   // DEV MODE: Serve public folder
   app.use(express.static(PUBLIC_DIR));
 } else {

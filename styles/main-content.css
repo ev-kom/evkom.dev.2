@@ -1,5 +1,5 @@
 .main-content-body {
-  padding: var(--space-lg);
+  padding: var(--space-xl);
   text-align: center;
   flex-grow: 1;
 }
@@ -19,10 +19,6 @@
   width: var(--icon-sm);
   height: var(--icon-sm);
   margin-right: var(--space-sm);
-}
-
-.attribution-header {
-  padding-bottom: var(--space-base);
 }
 
 .attribution-section {
@@ -48,7 +44,7 @@
 
 @media (max-width: 767px) {
   .main-content-body {
-    padding: var(--space-md);
+    padding: var(--space-sm);
   }
 
   .main-content-body img {

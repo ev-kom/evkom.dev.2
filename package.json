@@ -13,11 +13,14 @@
   "author": "Egor Komarov",
   "license": "ISC",
   "dependencies": {
+    "clean-css": "^5.3.3",
+    "compression": "^1.8.1",
     "express": "^5.2.1",
     "express-rate-limit": "^8.2.1",
     "googleapis": "^169.0.0",
     "posthtml": "^0.16.6",
     "posthtml-parser": "^0.12.1",
+    "terser": "^5.44.1",
     "validator": "^13.15.26",
     "zod": "^4.2.1"
   },

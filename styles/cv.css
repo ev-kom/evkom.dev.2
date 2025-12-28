@@ -112,13 +112,13 @@
 
 .job-date {
   font-size: var(--text-sm);
-  color: var(--color-muted-dark);
+  color: var(--color-text-secondary);
   white-space: nowrap;
 }
 
 .job-location {
   font-size: var(--text-sm);
-  color: var(--color-muted-light);
+  color: var(--color-text-tertiary);
   margin-bottom: var(--space-sm);
   display: block;
 }

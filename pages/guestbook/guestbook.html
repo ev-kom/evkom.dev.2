@@ -5,16 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guestbook - evkom.dev</title>
     <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="css/bundled.css?v=final" />
+    <x-inline-css src="variables.css"></x-inline-css>
+    <x-inline-css src="base.css"></x-inline-css>
+    <x-inline-css src="layout.css"></x-inline-css>
+    <x-inline-css src="main-content.css"></x-inline-css>
+    <x-inline-css src="windows-popup.css"></x-inline-css>
+    <x-inline-css src="guestbook.css"></x-inline-css>
+    <link rel="preload" href="/sky_tile.gif" as="image" fetchpriority="high" />
     <meta
       name="description"
       content="Sign the guestbook! Leave a message for Egor Komarov and join the retro web community."
     />
 
-    <link rel="stylesheet" href="css/guestbook.css" />
-    <link rel="stylesheet" href="/css/windows-popup.css" />
-    <script src="js/guestbook.js" defer></script>
-    <script src="js/gate.js" defer></script>
+    <link
+      rel="preload"
+      href="/fonts/SpaceMono-Regular.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/SpaceMono-Bold.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <x-inline-js src="guestbook.js"></x-inline-js>
+    <x-inline-js src="gate.js"></x-inline-js>
   </head>
   <body>
     <header><x-include src="shared/header"></x-include></header>
