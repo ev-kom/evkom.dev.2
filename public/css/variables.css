@@ -1,4 +1,20 @@
 /* Design Tokens - CSS Custom Properties */
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/SpaceMono-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/SpaceMono-Bold.woff2') format('woff2');
+}
+
 :root {
   /* Spacing Scale (2, 4, 8, 12, 16, 24, 32, 48) */
   --space-xxs: 2px; /* minimal spacing, borders */
@@ -97,11 +113,12 @@
   --icon-md: 40px;
 
   /* GIF sizing */
-  --gif-width-mobile: calc(88px / 1.5);
+  --gif-width-mobile: 88px;
 
   /* Layout */
   --sidebar-width: 20%;
   --content-max-width: 800px;
+  --win-mobile-max-width: 90%;
   --dialog-width: 400px;
   --terminal-min-width-desktop: 400px;
   --terminal-min-height-desktop: 220px;

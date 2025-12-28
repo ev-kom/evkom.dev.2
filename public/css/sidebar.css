@@ -7,6 +7,12 @@
   text-align: center;
 }
 
+.sidebar-section h2 {
+  margin-bottom: var(--space-md);
+  color: var(--color-navy);
+  font-size: var(--text-lg);
+}
+
 .sidebar-link-item {
   padding-bottom: var(--space-md);
 }

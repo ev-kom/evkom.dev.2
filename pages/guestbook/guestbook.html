@@ -4,16 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Guestbook - evkom.dev</title>
-    <link rel="stylesheet" href="css/base.css?v=fix-height-html" />
-    <link rel="stylesheet" href="css/layout.css?v=fix-height" />
-    <link rel="stylesheet" href="css/header.css?v=final" />
-    <link rel="stylesheet" href="css/sidebar.css?v=final" />
-    <link rel="stylesheet" href="css/main-content.css?v=align-fix" />
-    <link rel="stylesheet" href="css/footer.css?v=final" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/bundled.css?v=final" />
+    <meta
+      name="description"
+      content="Sign the guestbook! Leave a message for Egor Komarov and join the retro web community."
     />
+
     <link rel="stylesheet" href="css/guestbook.css" />
     <link rel="stylesheet" href="/css/windows-popup.css" />
     <script src="js/guestbook.js" defer></script>
@@ -25,14 +22,14 @@
       <section class="left-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content flex-col">
+      <main class="main-content flex-col">
         <section class="main-content-body main-content-body-guestbook">
           <x-dynamic src="guestbook/content"></x-dynamic>
         </section>
         <div class="main-content-footer">
           <x-include src="shared/footer"></x-include>
         </div>
-      </section>
+      </main>
       <section class="right-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-right"></x-include>
       </section>

@@ -1,7 +1,9 @@
 import express, { json } from 'express';
 import rateLimit from 'express-rate-limit';
+import { writeFile } from 'node:fs/promises';
 import { basename, extname, join } from 'path';
 
+import { generateBundledCss } from './build.js';
 import { verifySessionToken } from './backend/captcha.js';
 import { appendGuestbookMessage } from './backend/google-sheets.js';
 import { PAGE_REGISTRY } from './backend/registries.js';
@@ -122,6 +124,13 @@ app.use(async (req, res, next) => {
 
 // STATIC ASSETS HANDLING
 if (IS_DEV) {
+  // Dynamic CSS Bundling for Dev
+  try {
+    await generateBundledCss(PUBLIC_DIR);
+  } catch (err) {
+    console.error('Initial CSS Bundle Failed:', err);
+  }
+
   // DEV MODE: Serve public folder
   app.use(express.static(PUBLIC_DIR));
 } else {

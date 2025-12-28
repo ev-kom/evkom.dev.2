@@ -4,18 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CV - evkom.dev</title>
-    <link rel="stylesheet" href="css/base.css?v=fix-height-html" />
-    <link rel="stylesheet" href="css/layout.css?v=fix-height" />
-    <link rel="stylesheet" href="css/header.css?v=final" />
-    <link rel="stylesheet" href="css/sidebar.css?v=final" />
-    <link rel="stylesheet" href="css/main-content.css?v=align-fix" />
-    <link rel="stylesheet" href="css/footer.css?v=final" />
+    <meta
+      name="description"
+      content="Curriculum Vitae of Egor Komarov. 9+ years experience in Java, AWS, Kafka, and Microservices. Expert in building high-load distributed systems for Fintech and Tech."
+    />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="css/bundled.css?v=final" />
     <link rel="stylesheet" href="css/windows-popup.css?v=cv-btn" />
     <link rel="stylesheet" href="css/cv.css?v=refined" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <header><x-include src="shared/header"></x-include></header>
@@ -23,7 +19,7 @@
       <section class="left-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-left"></x-include>
       </section>
-      <section class="main-content flex-col">
+      <main class="main-content flex-col">
         <section class="main-content-body cv-container">
           <div class="cv-header">
             <div class="cv-title-container flex-gap">
@@ -38,6 +34,8 @@
                   src="gifs/message_envelope_open-0.gif"
                   alt="Email"
                   class="retro-icon icon-xxs"
+                  width="32"
+                  height="32"
                 />
               </a>
             </div>
@@ -49,15 +47,20 @@
 
           <div class="cv-intro">
             <p>
-              Full stack software engineer with 9+ years of experience building
-              high-load, distributed, customer-facing systems with a background
-              in nuclear physics. Primarily a Java expert (Java 21) with strong
-              frontend (React JS, JS, TS, CSS, HTML) and mobile (React Native,
-              Android/iOS) capabilities. Comfortable designing and implementing
-              all layers of the stack—from databases and infrastructure to
-              application layers—utilizing Java, Node.js with REST, and Kafka
+              Full stack software engineer with
+              <strong>9+ years of experience</strong> building
+              <strong>high-load, distributed, customer-facing systems</strong>
+              with a background in <strong>nuclear physics</strong>. Primarily a
+              <strong>Java expert (Java 21)</strong> with strong
+              <strong>frontend (React JS, JS, TS, CSS, HTML)</strong> and
+              <strong>mobile (React Native, Android/iOS)</strong> capabilities.
+              Comfortable designing and implementing all layers of the
+              stack—from databases and infrastructure to application
+              layers—utilizing
+              <strong>Java, Node.js with REST, and Kafka</strong>
               interfaces. Experienced in managing cloud-native environments on
-              AWS, including data sources such as AWS Aurora, Redis, and S3
+              <strong>AWS</strong>, including data sources such as
+              <strong>AWS Aurora, Redis, and S3</strong>
               buckets. Skilled at translating complex technical challenges into
               clear solutions that bridge engineering and business needs.
             </p>
@@ -92,11 +95,12 @@
             <div>
               <span class="job-location">Berlin, Germany</span>
               <p class="job-summary-large">
-                Klarna is a global payments and BNPL company. My team runs ~30
-                Spring Boot Java microservices (Kafka/REST) handling the full
-                Customer Communications lifecycle: orchestration, decisions,
-                data enrichment, generation, scheduling, delivery, callbacks,
-                and history.
+                Klarna is a global payments and BNPL company. My team runs
+                <strong>~30 Spring Boot Java microservices</strong> (Kafka/REST)
+                handling the full
+                <strong>Customer Communications lifecycle</strong>:
+                orchestration, decisions, data enrichment, generation,
+                scheduling, delivery, callbacks, and history.
               </p>
 
               <div class="job-description">
@@ -114,20 +118,22 @@
                     <ul>
                       <li>
                         <strong>Dynamic SMS Provider Switching</strong>:
-                        Developed an automated system to monitor real-time
-                        conversion and dynamically switch providers.
+                        Developed an automated system to monitor
+                        <strong>real-time conversion</strong> and dynamically
+                        switch providers.
                         <ul>
                           <li>
                             Impact: Improved session conversion by
                             <strong>1%</strong>, resulting in a significant
-                            multi-million EUR revenue uplift across major
-                            markets.
+                            <strong>multi-million EUR revenue uplift</strong>
+                            across major markets.
                           </li>
                           <li>
                             Reliability: Reduced provider failover from
                             <strong>30 mins to 1 min</strong>, cut SMS-related
-                            incidents by <strong>60%</strong>, and ensured zero
-                            downtime during Black Friday 2024.
+                            incidents by <strong>60%</strong>, and ensured
+                            <strong>zero downtime</strong> during Black Friday
+                            2024.
                           </li>
                         </ul>
                       </li>
@@ -164,7 +170,7 @@
                       <li>
                         <strong>Silent Push</strong>: Architected a separate
                         channel for iOS silent pushes (Remote Device Login) and
-                        built the handler in React Native.
+                        built the handler in <strong>React Native</strong>.
                       </li>
                     </ul>
                   </li>
@@ -205,7 +211,9 @@
                       <li>
                         <strong>Cloud Infrastructure</strong>: Managed and
                         maintained high-availability Comms Platform resources on
-                        AWS, including Aurora PostgreSQL, Redis, and S3 buckets.
+                        <strong>AWS</strong>, including
+                        <strong>Aurora PostgreSQL, Redis, and S3 buckets</strong
+                        >.
                       </li>
                       <li>
                         <strong>Kafka Optimization</strong>: Identified and
@@ -214,9 +222,10 @@
                         lowering regional Kafka costs.
                       </li>
                       <li>
-                        <strong>Performance Testing</strong>: Introduced k6 to
-                        the team, executing spike (<strong>600 req/s</strong>)
-                        and load tests to guarantee platform stability.
+                        <strong>Performance Testing</strong>: Introduced
+                        <strong>k6</strong> to the team, executing spike
+                        (<strong>600 req/s</strong>) and load tests to guarantee
+                        platform stability.
                       </li>
                       <li>
                         <strong>CI/CD</strong>: Standardized Jenkins declarative
@@ -271,26 +280,28 @@
             </div>
             <span class="job-location">Moscow, Russia</span>
             <p class="job-summary">
-              Contracted via Gridfore LLC provides a platform for real-time big
-              data analysis and decision making for banking and fintech.
+              Contracted via Gridfore LLC provides a platform for
+              <strong>real-time big data analysis</strong> and decision making
+              for <strong>banking and fintech</strong>.
             </p>
             <div class="job-description">
               <ul>
                 <li>
                   <strong>High-Load Engineering</strong>: Developed a
                   distributed in-memory ETL data engine processing
-                  <strong>500,000 records/sec</strong> using Akka Actor System
-                  and Akka Streams.
+                  <strong>500,000 records/sec</strong> using
+                  <strong>Akka Actor System and Akka Streams</strong>.
                 </li>
                 <li>
                   <strong>Web Monitoring</strong>: Built the platform interface
-                  with React JS and Redux to provide real-time visibility into
-                  cluster states.
+                  with <strong>React JS and Redux</strong> to provide real-time
+                  visibility into cluster states.
                 </li>
                 <li>
                   <strong>Performance Engineering</strong>: Improved platform
-                  throughput by <strong>20x</strong> through low-level profiling
-                  with YourKit and benchmarking with JMH.
+                  throughput by <strong>20x</strong> through
+                  <strong>low-level profiling with YourKit</strong> and
+                  benchmarking with JMH.
                 </li>
               </ul>
             </div>
@@ -328,12 +339,15 @@
             <div class="job-description">
               <ul>
                 <li>
-                  Designed a scalable recruitment platform using Golang and
-                  PostgreSQL on AWS.
+                  Designed a
+                  <strong>scalable recruitment platform</strong> using
+                  <strong>Golang and PostgreSQL</strong> on
+                  <strong>AWS</strong>.
                 </li>
                 <li>
-                  Developed frontend with React and Material UI (MUI) with Auth0
-                  and Stripe integrations.
+                  Developed frontend with
+                  <strong>React and Material UI (MUI)</strong> with
+                  <strong>Auth0 and Stripe</strong> integrations.
                 </li>
               </ul>
             </div>
@@ -367,8 +381,9 @@
             <div class="job-description">
               <ul>
                 <li>
-                  Maintained Oracle-based CRM systems for banking services using
-                  PL/SQL and JavaScript.
+                  Maintained <strong>Oracle-based CRM systems</strong> for
+                  <strong>banking services</strong> using
+                  <strong>PL/SQL and JavaScript</strong>.
                 </li>
               </ul>
             </div>
@@ -400,12 +415,12 @@
             <div class="job-description">
               <ul>
                 <li>
-                  Simulated nuclear reactor core parameters using GPU computing
-                  (CUDA / Monte-Carlo methods).
+                  Simulated nuclear reactor core parameters using
+                  <strong>GPU computing (CUDA / Monte-Carlo methods)</strong>.
                 </li>
                 <li>
-                  Developed visualization software for scientific data
-                  comparison.
+                  Developed <strong>visualization software</strong> for
+                  scientific data comparison.
                 </li>
               </ul>
             </div>
@@ -475,7 +490,7 @@
         <div class="main-content-footer">
           <x-include src="shared/footer"></x-include>
         </div>
-      </section>
+      </main>
       <section class="right-sidebar sidebar-common flex-col">
         <x-include src="shared/sidebar-right"></x-include>
       </section>

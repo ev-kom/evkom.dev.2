@@ -1,10 +1,19 @@
-import { cp, rm } from 'fs/promises';
+import { cp, rm, writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { build } from './backend/renderer.js';
+import { bundleCss } from './backend/css-bundler.js';
 
 const STATIC_DIRS = ['public'];
 
-async function runBuild(distDir = './dist') {
+export async function generateBundledCss(distDir) {
+  console.log('Generating bundled CSS...');
+  const bundledCssContent = await bundleCss();
+  const cssDist = join(distDir, 'css');
+  await mkdir(cssDist, { recursive: true });
+  await writeFile(join(cssDist, 'bundled.css'), bundledCssContent);
+}
+
+export async function runBuild(distDir = './dist') {
   console.log('Starting build...');
 
   await rm(distDir, { recursive: true, force: true });
@@ -16,13 +25,10 @@ async function runBuild(distDir = './dist') {
   for (const dir of STATIC_DIRS) {
     console.log(`Copying ${dir}...`);
     // Copy contents of public directly to dist
-    await cp(join(process.cwd(), dir), distDir, { recursive: true });
+    await cp(join(import.meta.dirname, dir), distDir, { recursive: true });
   }
+
+  await generateBundledCss(distDir);
 
   console.log('Build complete.');
 }
-
-runBuild().catch((err) => {
-  console.error('Build failed:', err);
-  process.exit(1);
-});
