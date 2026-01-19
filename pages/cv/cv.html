@@ -39,9 +39,11 @@
       <main class="main-content flex-col">
         <section class="main-content-body cv-container">
           <div class="cv-header">
-            <div class="cv-title-container flex-gap">
+            <div class="cv-title-container flex-col flex-gap items-baseline">
               <h2>Egor Komarov</h2>
-              <span class="retro-mail-text">komarovev91@gmail.com</span>
+              <span class="retro-mail-text"
+                >Berlin, Germany | komarovev91@gmail.com | evkom.dev</span
+              >
               <a
                 href="mailto:komarovev91@gmail.com"
                 class="win-btn retro-mail-btn"
@@ -54,6 +56,13 @@
                   width="32"
                   height="32"
                 />
+                <span
+                  style="
+                    font-size: var(--text-xs);
+                    margin-left: var(--space-xs);
+                  "
+                  >Email me</span
+                >
               </a>
             </div>
             <p>
@@ -63,6 +72,7 @@
           </div>
 
           <div class="cv-intro">
+            <div class="section-title">SUMMARY</div>
             <p>
               Full stack software engineer with
               <strong>9+ years of experience</strong> building
@@ -81,17 +91,15 @@
               buckets. Skilled at translating complex technical challenges into
               clear solutions that bridge engineering and business needs.
             </p>
-            <ul>
-              <li>
-                <strong>Proficient with:</strong> Java 21, Spring Boot, React
-                Native, React JS, JavaScript, TypeScript, Kafka, AWS (Aurora,
-                S3), Terraform, CloudFormation, Microservices, LangChain,
-                LangGraph, Datadog, Jenkins, Groovy, Docker, K6 load test,
-                Node.js, FCM, Firebase, Data Lakehouse, Data JPA, MVC,
-                Hibernate, JDBC, Oracle, PostgreSQL, Redis, Zookeeper, Apache
-                Curator, Akka Actor Systems, Akka Streams.
-              </li>
-            </ul>
+            <p>
+              <strong>Proficient with:</strong> Java 21, Spring Boot, React
+              Native, React JS, JavaScript, TypeScript, Kafka, AWS (Aurora, S3),
+              Terraform, CloudFormation, Microservices, LangChain, LangGraph,
+              Datadog, Jenkins, Groovy, Docker, K6 load test, Node.js, FCM,
+              Firebase, Data Lakehouse, Data JPA, MVC, Hibernate, JDBC, Oracle,
+              PostgreSQL, Redis, Zookeeper, Apache Curator, Akka Actor Systems,
+              Akka Streams.
+            </p>
           </div>
 
           <div class="section-title">EXPERIENCE</div>
@@ -112,8 +120,8 @@
             <div>
               <span class="job-location">Berlin, Germany</span>
               <p class="job-summary-large">
-                Klarna is a global payments and BNPL company. My team runs
-                <strong>~30 Spring Boot Java microservices</strong> (Kafka/REST)
+                Klarna is a global payments and BNPL company. My team runs over
+                <strong>30 Spring Boot Java microservices</strong> (Kafka/REST)
                 handling the full
                 <strong>Customer Communications lifecycle</strong>:
                 orchestration, decisions, data enrichment, generation,
@@ -135,9 +143,8 @@
                     <ul>
                       <li>
                         <strong>Dynamic SMS Provider Switching</strong>:
-                        Developed an automated system to monitor
-                        <strong>real-time conversion</strong> and dynamically
-                        switch providers.
+                        Developed an automated system to monitor real-time
+                        conversion and dynamically switch providers.
                         <ul>
                           <li>
                             Impact: Improved session conversion by
@@ -169,8 +176,7 @@
                       <li>
                         <strong>Push Infrastructure</strong>: Managed end-to-end
                         infrastructure, including a Delivery Eligibility Check
-                        that reduced failed deliveries by over
-                        <strong>50%</strong>.
+                        that reduced failed deliveries by over 50%.
                       </li>
                       <li>
                         <strong>Braze Migration</strong>: Migrated marketing
@@ -194,8 +200,7 @@
 
                   <li>
                     <strong
-                      >Email (Business Critical / OTP / Transactional /
-                      Legal)</strong
+                      >Email (Business Critical / Transactional / Legal)</strong
                     >
                     - Providers:
                     <a
@@ -223,7 +228,7 @@
                   </li>
 
                   <li>
-                    <strong>Maintenance & Reliability</strong>:
+                    <strong>Maintenance & Reliability</strong>
                     <ul>
                       <li>
                         <strong>Cloud Infrastructure</strong>: Managed and
@@ -289,17 +294,16 @@
                 <span class="job-company"
                   >@
                   <a href="https://gridfore.com" target="_blank"
-                    >Gridfore</a
+                    >Accenture Consulting via Gridfore LLC</a
                   ></span
                 >
               </div>
               <span class="job-date">May 2017 - Sep 2022</span>
             </div>
-            <span class="job-location">Moscow, Russia</span>
+            <span class="job-location">Moscow</span>
             <p class="job-summary">
-              Contracted via Gridfore LLC provides a platform for
-              <strong>real-time big data analysis</strong> and decision making
-              for <strong>banking and fintech</strong>.
+              Contracted via Gridfore LLC provides a platform for real-time big
+              data analysis and decision making for banking and fintech.
             </p>
             <div class="job-description">
               <ul>
@@ -316,9 +320,8 @@
                 </li>
                 <li>
                   <strong>Performance Engineering</strong>: Improved platform
-                  throughput by <strong>20x</strong> through
-                  <strong>low-level profiling with YourKit</strong> and
-                  benchmarking with JMH.
+                  throughput by <strong>20x</strong> through low-level profiling
+                  with YourKit and benchmarking with JMH.
                 </li>
               </ul>
             </div>
@@ -385,22 +388,21 @@
                 <span class="job-company"
                   >@
                   <a href="https://www.at-consulting.ru/" target="_blank"
-                    >AT Consulting</a
+                    >AT-Consulting</a
                   ></span
                 >
               </div>
-              <span class="job-date">Aug 2016 - May 2017</span>
+              <span class="job-date">Aug 2016 – May 2017</span>
             </div>
             <p class="job-summary">
-              AT Consulting provides custom software solutions and consulting
-              expertise.
+              AT-Consulting provides custom software solutions and development
+              and consulting expertise to customers.
             </p>
             <div class="job-description">
               <ul>
                 <li>
                   Maintained <strong>Oracle-based CRM systems</strong> for
-                  <strong>banking services</strong> using
-                  <strong>PL/SQL and JavaScript</strong>.
+                  banking services using <strong>PL/SQL and JavaScript</strong>.
                 </li>
               </ul>
             </div>
@@ -412,49 +414,18 @@
             </div>
           </div>
 
-          <!-- VNIIAES -->
-          <div class="experience-item">
-            <div class="job-header flex-between items-baseline flex-wrap">
-              <div>
-                <span class="job-title">Engineer</span>
-                <span class="job-company"
-                  >@
-                  <a href="https://vniiaes.ru/en/" target="_blank"
-                    >VNIIAES</a
-                  ></span
-                >
-              </div>
-              <span class="job-date">Jul 2014 - Dec 2015</span>
-            </div>
-            <p class="job-summary">
-              Research Institute for Nuclear Power Plants Operation.
-            </p>
-            <div class="job-description">
-              <ul>
-                <li>
-                  Simulated nuclear reactor core parameters using
-                  <strong>GPU computing (CUDA / Monte-Carlo methods)</strong>.
-                </li>
-                <li>
-                  Developed <strong>visualization software</strong> for
-                  scientific data comparison.
-                </li>
-              </ul>
-            </div>
-            <div class="job-tags flex-wrap flex-gap">
-              <span class="job-tag">C#</span>
-              <span class="job-tag">CUDA</span>
-              <span class="job-tag">GPU COMPUTING</span>
-              <span class="job-tag">MONTE CARLO MODELING</span>
-            </div>
-          </div>
-
           <div class="section-title">EDUCATION</div>
 
           <div class="experience-item">
             <div class="job-header flex-between items-baseline flex-wrap">
               <div>
-                <span class="job-title">Klarna Generative AI Academy</span>
+                <span class="job-title"
+                  ><a
+                    href="https://www.linkedin.com/posts/egor-komarov-5b6012a5_im-happy-to-share-that-ive-obtained-a-new-activity-7287114468356947968-ATsl?utm_source=share&utm_medium=member_desktop&rcm=ACoAABY_sdoBamwlk0q52mtNJj524CwzvTDO7IY"
+                    target="_blank"
+                    >Klarna Generative AI Academy</a
+                  ></span
+                >
               </div>
               <span class="job-date">Dec 2024</span>
             </div>
@@ -477,18 +448,20 @@
           <div class="experience-item">
             <div class="job-header flex-between items-baseline flex-wrap">
               <div>
-                <span class="job-title">Nuclear Physics and Technologies</span>
+                <span class="job-title"
+                  ><a
+                    href="https://eng.mephi.ru/institutes/inphe"
+                    target="_blank"
+                    >National Research Nuclear University “MEPhI”</a
+                  ></span
+                >
               </div>
-              <span class="job-date">2010 - 2016</span>
+              <span class="job-date">Moscow 2010 - 2016</span>
             </div>
             <div class="job-company">
-              <a href="https://eng.mephi.ru/institutes/inphe" target="_blank"
-                >National Research Nuclear University MEPhI</a
-              >
+              Master of Nuclear Physics and Technologies
             </div>
-            <div class="job-description education">
-              Masters Degree. Grade: 4.8/5.0
-            </div>
+            <div class="job-description education">GPA 4.8/5.0.</div>
             <div class="job-tags flex-wrap flex-gap">
               <span class="job-tag">C#</span>
               <span class="job-tag">CUDA</span>

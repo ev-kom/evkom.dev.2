@@ -1,42 +1,28 @@
-# evkom.dev
+# evkom.dev (Top Level)
 
-Retro 2000s SSG. No frameworks.
+> **Tech**: Node.js, Custom SSG, Vanilla JS/CSS.
+> **Vibe**: Retro 2000s, Dithered, Pixelated.
 
-## Commands
+## ⚡ Quick Start
 
-- `npm run dev` -- Dev server (localhost:8000)
-- `npm run build` -- Generate static `dist/`
-- `npm start` -- Prod server (localhost:3000)
+- `npm run dev` -> localhost:8000 (JIT Render)
+- `npm run build` -> dist/ (Static Gen)
+- `npm start` -> localhost:3000 (Prod Serve)
 
-## Critical Architecture
+## 🗺️ Project Map
 
-- **Renderer** (`backend/renderer.js`): Unified engine for dev (JIT) and prod (hydration).
-- **Registries** (`backend/registries.js`):
-  - `PAGE_REGISTRY`: URL path -> HTML file.
-  - `DYNAMIC_REGISTRY`: Tag key -> Server handler.
-- **Custom Tags**:
-  - `<x-include src="...">` -- Statics.
-  - `<x-dynamic src="...">` -- Dynamic components.
-  - `<x-inline-css src="...">` / `<x-inline-js src="...">` -- Required. Assets must be inlined.
-  - `{{varName}}` -- Inline variable injection for string nodes.
+| Path           | Purpose                                                 |
+| -------------- | ------------------------------------------------------- |
+| `pages/`       | HTML Entry points (one folder per page).                |
+| `shared/`      | Reusable HTML partials (`<x-include>`).                 |
+| `styles/`      | CSS files. **Must be inlined**.                         |
+| `backend/`     | SSG Engine (`renderer.js`) & Routing (`registries.js`). |
+| `.agent/docs/` | **Detailed Documentation (See below)**.                 |
 
-## Essential Conventions
+## 📚 Documentation (Progressive Disclosure)
 
-- **Clean Structure**: HTML for structure, CSS for presentation, JS for behavior. No inline styles or `<script>` in `<body>`.
-- **Performance**: LCP images must use `fetchpriority="high"` and `loading="eager"`.
-- **Accessibility**: Strict heading hierarchy (`h1` -> `h2` -> `h3`) and `<main>` landmark are mandatory.
-- **Design**: Use semantic tokens from `variables.css`. No hardcoded colors.
-- **CSS Reuse**: Check `styles/base.css` and existing patterns in `styles/` before adding new ones.
+Read these ONLY if relevant to your task.
 
-## Security
-
-- **Auth**: Cloudflare Turnstile + stateless HMAC-signed tokens (10min TTL). See `backend/captcha.js`
-- **Validation**: Zod schemas strip unknown keys (`backend/schemas.js`), rate-limiting on `/api` (`server.js`).
-- **Sanitization**: `validator.escape()` for XSS, safe `decodeURIComponent` for paths.
-- **Constraints**: Payload size limits enforced in `server.js` handlers.
-
-## Post-Implementation Checklist
-
-1. Update `pages/manifest/manifest.html` if pages change.
-2. Update `README.md` and `GEMINI.md` if architecture or patterns change.
-3. Verify Lighthouse status: Performance, Accessibility, Best Practices, SEO.
+- **[workflows.md](.agent/docs/workflows.md)**: **Read first**. How to add pages, style components, and write logic.
+- **[architecture.md](.agent/docs/architecture.md)**: Deep dive into the custom SSG renderer and tags.
+- **[security.md](.agent/docs/security.md)**: Auth flows, Turnstile, and Zod validation.
