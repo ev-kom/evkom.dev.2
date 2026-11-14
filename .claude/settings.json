@@ -1,14 +1,1 @@
-{
-  "permissions": {
-    "deny": [
-      "Read(./.env)",
-      "Read(./.env.local)",
-      "Read(./.env.production)",
-      "Bash(cat .env)",
-      "Bash(cat ./.env)",
-      "Bash(grep * .env)",
-      "Bash(source .env)",
-      "Bash(npm run dev)"
-    ]
-  }
-}
+../.agent/claude-settings.json
