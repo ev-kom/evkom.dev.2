@@ -1,10 +1,15 @@
-import { google } from 'googleapis';
+import { auth as googleAuth, sheets } from '@googleapis/sheets';
 import validator from 'validator';
 
+let sheetsClient = null;
+
 /**
- * Gets an authenticated Google Sheets client.
+ * Gets the Google Sheets client. Built once on first use and cached; a failed
+ * or skipped init is not cached, so it is retried on the next call.
  */
-async function getSheetsClient() {
+function getSheetsClient() {
+  if (sheetsClient) return sheetsClient;
+
   if (!process.env.GOOGLE_SERVICE_ACCOUNT) {
     console.warn(
       'GOOGLE_SERVICE_ACCOUNT is not set. Google Sheets integration disabled.'
@@ -14,11 +19,14 @@ async function getSheetsClient() {
 
   try {
     const credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
-    const auth = new google.auth.GoogleAuth({
-      credentials,
+    // JWT directly: GoogleAuth({ credentials }) is deprecated in google-auth-library 11.
+    const auth = new googleAuth.JWT({
+      email: credentials.client_email,
+      key: credentials.private_key,
       scopes: ['https://www.googleapis.com/auth/spreadsheets'],
     });
-    return google.sheets({ version: 'v4', auth });
+    sheetsClient = sheets({ version: 'v4', auth });
+    return sheetsClient;
   } catch (err) {
     console.error('Failed to initialize Google Sheets client:', err);
     return null;
@@ -27,8 +35,8 @@ async function getSheetsClient() {
 
 export async function appendGuestbookMessage(name, message) {
   try {
-    const sheets = await getSheetsClient();
-    if (!sheets) {
+    const client = getSheetsClient();
+    if (!client) {
       throw new Error('Google Sheets client not initialized');
     }
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -44,7 +52,7 @@ export async function appendGuestbookMessage(name, message) {
       .toLocaleString('sv-SE', { timeZoneName: 'short' })
       .replace(/-/g, '/');
 
-    await sheets.spreadsheets.values.append({
+    await client.spreadsheets.values.append({
       spreadsheetId,
       range,
       valueInputOption: 'RAW',
@@ -60,14 +68,14 @@ export async function appendGuestbookMessage(name, message) {
 
 export async function getGuestbookMessages() {
   try {
-    const sheets = await getSheetsClient();
-    if (!sheets) {
+    const client = getSheetsClient();
+    if (!client) {
       return [];
     }
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
     const range = `${process.env.GOOGLE_SHEET_NAME}!A:C`;
 
-    const response = await sheets.spreadsheets.values.get({
+    const response = await client.spreadsheets.values.get({
       spreadsheetId,
       range,
     });

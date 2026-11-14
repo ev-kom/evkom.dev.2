@@ -2,10 +2,9 @@ import {
   CaptchaState,
   verifyTurnstileToken,
   generateSessionToken,
-  verifySessionToken,
+  renewSessionToken,
 } from '../../backend/captcha.js';
 import { getGuestbookMessages } from '../../backend/google-sheets.js';
-import { loadRaw } from '../../backend/renderer.js';
 
 /**
  * Dynamic Handler for Guestbook Page
@@ -13,10 +12,11 @@ import { loadRaw } from '../../backend/renderer.js';
 export const guestbook_content = async ({ render, ...params }) => {
   try {
     // 1. Allow access via valid Session Token (from POST body during reload)
-    if (params.sessionToken && verifySessionToken(params.sessionToken)) {
-      const newSessionToken = generateSessionToken();
+    // Renewal keeps the original session start, so it never outlives the 30-minute cap.
+    const renewedToken = await renewSessionToken(params.sessionToken);
+    if (renewedToken) {
       return await render('guestbook/content', {
-        sessionToken: newSessionToken,
+        sessionToken: renewedToken,
       });
     }
 
@@ -33,7 +33,7 @@ export const guestbook_content = async ({ render, ...params }) => {
     }
 
     // This template contains <x-dynamic src="guestbook/messages">
-    const sessionToken = generateSessionToken();
+    const sessionToken = await generateSessionToken();
 
     if (!sessionToken) {
       console.error('Failed to generate session token (missing secret?)');

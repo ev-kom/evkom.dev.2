@@ -18,3 +18,18 @@ export const PAGE_SCHEMAS = {
   // Default schema for all other pages (strips all user input)
   default: baseSchema,
 };
+
+/** Body of POST /api/guestbook. Whitespace is trimmed before the length checks. */
+export const guestbookPostSchema = z.object({
+  name: z
+    .string('DATA CORRUPTION: INVALID NAME FIELD.')
+    .trim()
+    .min(1, 'DATA CORRUPTION: MISSING INPUT FIELDS.')
+    .max(30, 'BUFFER OVERFLOW: NAME EXCEEDS 30 CHARACTERS.'),
+  message: z
+    .string('DATA CORRUPTION: INVALID MESSAGE FIELD.')
+    .trim()
+    .min(1, 'DATA CORRUPTION: MISSING INPUT FIELDS.')
+    .max(2000, 'BUFFER OVERFLOW: MESSAGE EXCEEDS 2000 CHARACTERS.'),
+  sessionToken: z.string('DATA CORRUPTION: INVALID SESSION TOKEN.'),
+});

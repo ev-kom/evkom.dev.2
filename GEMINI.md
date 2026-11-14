@@ -1,28 +1,16 @@
-# evkom.dev (Top Level)
+# evkom.dev
 
-> **Tech**: Node.js, Custom SSG, Vanilla JS/CSS.
-> **Vibe**: Retro 2000s, Dithered, Pixelated.
+Personal portfolio site: Express 5 server, custom posthtml static-site generator, plain HTML/CSS/JS, guestbook behind Cloudflare Turnstile.
 
-## ⚡ Quick Start
+Start with [README.md](README.md) for setup and commands. Details are in `.agent/docs/`. Read only what the task needs.
 
-- `npm run dev` -> localhost:8000 (JIT Render)
-- `npm run build` -> dist/ (Static Gen)
-- `npm start` -> localhost:3000 (Prod Serve)
+- [workflows.md](.agent/docs/workflows.md): add a page, styles, dynamic content; tests; dependencies; checks after a deploy.
+- [architecture.md](.agent/docs/architecture.md): renderer, registries, render modes, routing.
+- [security.md](.agent/docs/security.md): captcha gate, session token, validation, rate limits, headers, known limits.
 
-## 🗺️ Project Map
+## Hard rules
 
-| Path           | Purpose                                                 |
-| -------------- | ------------------------------------------------------- |
-| `pages/`       | HTML Entry points (one folder per page).                |
-| `shared/`      | Reusable HTML partials (`<x-include>`).                 |
-| `styles/`      | CSS files. **Must be inlined**.                         |
-| `backend/`     | SSG Engine (`renderer.js`) & Routing (`registries.js`). |
-| `.agent/docs/` | **Detailed Documentation (See below)**.                 |
-
-## 📚 Documentation (Progressive Disclosure)
-
-Read these ONLY if relevant to your task.
-
-- **[workflows.md](.agent/docs/workflows.md)**: **Read first**. How to add pages, style components, and write logic.
-- **[architecture.md](.agent/docs/architecture.md)**: Deep dive into the custom SSG renderer and tags.
-- **[security.md](.agent/docs/security.md)**: Auth flows, Turnstile, and Zod validation.
+- Never read `.env`. Only `.env.test` (dummy values) may be read.
+- Run the server with `node --env-file=<file> server.js` (`npm run dev` does this and also adds `--dev`, which skips the captcha check when the secret is missing), because the app does not load `.env` itself.
+- Write integration tests only, in `test/integration.test.js`. No unit tests.
+- Do not commit or push unless asked. A push to `main` deploys the site.

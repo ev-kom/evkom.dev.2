@@ -4,7 +4,7 @@ import { build } from './backend/renderer.js';
 
 const STATIC_DIRS = ['public'];
 
-export async function runBuild(distDir = './dist') {
+export async function runBuild(distDir = join(import.meta.dirname, 'dist')) {
   console.log('Starting build...');
 
   await rm(distDir, { recursive: true, force: true });

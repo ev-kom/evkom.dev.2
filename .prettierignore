@@ -1,0 +1,6 @@
+dist
+legacy
+node_modules
+.idea
+docs
+package-lock.json

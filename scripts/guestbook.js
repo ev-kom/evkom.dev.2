@@ -52,9 +52,12 @@ window.initGuestbook = function () {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      const data = await res.json();
+      const isJson = (res.headers.get('content-type') || '').includes(
+        'application/json'
+      );
+      const data = isJson ? await res.json().catch(() => null) : null;
 
-      if (res.ok) {
+      if (res.ok && data) {
         status.textContent = 'TRANSMISSION COMPLETE.';
         status.style.color = 'green';
         form.reset();
@@ -66,7 +69,10 @@ window.initGuestbook = function () {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ sessionToken: token }),
           })
-            .then((r) => r.text())
+            .then((r) => {
+              if (!r.ok) throw new Error('Reload response was not ok');
+              return r.text();
+            })
             .then((html) => {
               if (window.replaceDocument) {
                 window.replaceDocument(html, token);
@@ -81,7 +87,12 @@ window.initGuestbook = function () {
             });
         }, 100);
       } else {
-        throw new Error(data.error || 'Error');
+        throw new Error(
+          data?.error ||
+            (res.status === 429
+              ? 'TOO MANY REQUESTS. TRY AGAIN LATER.'
+              : `SYSTEM FAILURE: UNEXPECTED RESPONSE (${res.status}).`)
+        );
       }
     } catch (err) {
       status.textContent = err.message;

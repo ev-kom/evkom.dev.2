@@ -8,6 +8,9 @@ import CleanCSS from 'clean-css';
 import { minify as terserMinify } from 'terser';
 import { DYNAMIC_REGISTRY, PAGE_REGISTRY } from './registries.js';
 
+// Project root, so paths do not depend on the working directory.
+const ROOT = path.join(import.meta.dirname, '..');
+
 /**
  * ENUMS & MODES
  */
@@ -185,7 +188,7 @@ async function resolveInlineCss(src, context) {
   const childCtx = context.createChild(`CSS:${src}`);
 
   try {
-    const filePath = path.join(process.cwd(), 'styles', src);
+    const filePath = path.join(ROOT, 'styles', src);
     const cssContent = await fs.readFile(filePath, 'utf-8');
     return `<style data-src="${src}">${minifyCss(cssContent)}</style>`;
   } catch (err) {
@@ -200,7 +203,7 @@ async function resolveInlineJs(src, context) {
   const childCtx = context.createChild(`JS:${src}`);
 
   try {
-    const filePath = path.join(process.cwd(), 'scripts', src);
+    const filePath = path.join(ROOT, 'scripts', src);
     const jsContent = await fs.readFile(filePath, 'utf-8');
     return `<script data-src="${src}">${await minifyJs(jsContent)}</script>`;
   } catch (err) {
@@ -402,7 +405,7 @@ export async function renderDev(key, params = {}) {
   }
 }
 
-export async function build(distDir = './dist') {
+export async function build(distDir = path.join(ROOT, 'dist')) {
   console.log('Starting Universal Static Build...');
   await fs.mkdir(distDir, { recursive: true });
 
@@ -436,14 +439,14 @@ export async function renderProd(key, params = {}) {
   }
 }
 
-export async function loadRaw(key, context = null) {
+async function loadRaw(key, context = null) {
   const file = PAGE_REGISTRY[key];
   if (!file) {
     console.error(`[Render Error] Page not found in registry: ${key}`);
     return '';
   }
 
-  const fullPath = path.resolve(file);
+  const fullPath = path.join(ROOT, file);
 
   if (context) {
     context.source = `RAW: ${file}`;
@@ -457,11 +460,11 @@ export async function loadRaw(key, context = null) {
  * Strictly limited to the /dist folder to prevent path traversal or source leakage.
  */
 async function loadDist(key, context = null) {
-  // Resolve the path and ensure it's relative to current working directory /dist
-  const safePath = path.join(process.cwd(), 'dist', `${key}.html`);
+  // Resolve the path and ensure it stays inside <root>/dist
+  const safePath = path.join(ROOT, 'dist', `${key}.html`);
 
   // Security Guard: Prevent directory traversal (e.g. key = "../../etc/passwd")
-  if (!safePath.startsWith(path.join(process.cwd(), 'dist'))) {
+  if (!safePath.startsWith(path.join(ROOT, 'dist'))) {
     console.error(
       `[Security Warning] Attempted path traversal blocked for key: ${key}`
     );
@@ -473,7 +476,7 @@ async function loadDist(key, context = null) {
       context.source = `DIST: ${key}.html`;
     }
     return await fs.readFile(safePath, 'utf-8');
-  } catch (err) {
+  } catch {
     console.error(`[Render Error] Pre-built file not found in dist: ${key}`);
     return '';
   }

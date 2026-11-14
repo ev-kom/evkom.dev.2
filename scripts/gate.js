@@ -27,9 +27,7 @@ function initTerminalRetry() {
 
   input.style.width = '0ch'; // Initial width for cursor placement
 
-  // Ensure input is focused
   input.focus();
-  document.addEventListener('click', () => input.focus());
 
   input.addEventListener('input', () => {
     input.style.width = input.value.length + 'ch';
@@ -46,11 +44,6 @@ function initTerminalRetry() {
         input.value = ''; // Reset if invalid
       }
     }
-  });
-
-  // Keep input focused even on blur
-  input.addEventListener('blur', () => {
-    setTimeout(() => input.focus(), 100);
   });
 }
 
@@ -103,6 +96,14 @@ window.replaceDocument = function (html, sessionToken) {
   }
 };
 
+// Automatic reload loops while the server rate-limits (429), so show the manual retry instead.
+function showDenied() {
+  const widget = document.getElementById('widget-wrapper');
+  const denied = document.getElementById('gate-message-denied');
+  if (widget) widget.style.display = 'none';
+  if (denied) denied.style.display = '';
+}
+
 function onTurnstileError() {
   // Fetch server-rendered error page
   fetch('/guestbook.html', {
@@ -110,13 +111,16 @@ function onTurnstileError() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ 'cf-turnstile-response': 'CLIENT_ERROR' }),
   })
-    .then((res) => res.text())
+    .then((res) => {
+      if (!res.ok) throw new Error('Network response was not ok');
+      return res.text();
+    })
     .then((html) => {
       window.replaceDocument(html);
     })
     .catch((e) => {
       console.error('Critical failure:', e);
-      window.location.href = '/500.html';
+      showDenied();
     });
 }
 
@@ -135,7 +139,7 @@ function onTurnstileSuccess(token) {
     })
     .catch((e) => {
       console.error('Critical failure:', e);
-      // Fallback to 500 page if fetch fails
-      window.location.href = '/500.html';
+      // Show the denied panel, not a reload: the widget can re-solve and hit the limit again
+      showDenied();
     });
 }

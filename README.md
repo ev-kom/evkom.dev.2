@@ -1,51 +1,41 @@
 # evkom.dev
 
-Retro 2000s-style personal portfolio for Egor Komarov. Built with a custom Node.js SSG and zero frameworks.
+Personal portfolio site of Egor Komarov, in a retro 2000s style. It is an Express 5 server with a small custom static-site generator (posthtml). The pages use plain HTML, CSS and browser JavaScript. The guestbook is stored in a Google Sheet and protected by Cloudflare Turnstile.
 
-## Features
+## Run it
 
-### Hand-Crafted SSG
+Use the Node.js version in [`.nvmrc`](.nvmrc) (the same range is in `engines` in [`package.json`](package.json)).
 
-- **Unified Pipeline**: One renderer handles both JIT development and static production builds.
-- **Recursive Includes**: `<x-include>` allows nesting partials like Russian dolls.
-- **Hybrid Rendering**: Static by default, using `<x-dynamic>` for live server-side components.
-- **Zero Render-Blocking**: Essential CSS and JS are automatically inlined and minified.
+Create a `.env` file in the project root. Never commit it. [`.env.example`](.env.example) lists the names:
 
-### Web 1.0 Aesthetic
+| Variable                                     | Purpose                                                                            |
+| -------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile widget key and server-side secret.                            |
+| `SESSION_SECRET_KEY`                         | Signing key of the guestbook session token.                                        |
+| `GOOGLE_SERVICE_ACCOUNT`                     | Service account credentials as one JSON string.                                    |
+| `GOOGLE_SHEET_ID`, `GOOGLE_SHEET_NAME`       | Spreadsheet and tab that hold the guestbook (columns A to C: time, name, message). |
 
-- **Pure Trinity**: Zero modern frameworks—just standard HTML, CSS, and Vanilla JS.
-- **Dithered & Pixelated**: 88x31 buttons, dithered GIFs, and `Space Mono` typography.
-- **Unified Design**: No magic numbers; all styles derived from `variables.css`.
+| Command          | What it does                                                                                                                                                           |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `npm run dev`    | `node --env-file=.env server.js --dev`. Renders pages on each request. Listens on port 8000.                                                                           |
+| `npm run build`  | Renders every page and partial into `dist/` and copies `public/` into it. A partial is a page fragment, such as the header, that is built but never served on its own. |
+| `npm start`      | `node server.js`. Serves `dist/` on port 3000. Reads the environment from the process, not `.env`.                                                                     |
+| `npm test`       | Integration tests. See [workflows](.agent/docs/workflows.md#tests).                                                                                                    |
+| `npm run lint`   | ESLint.                                                                                                                                                                |
+| `npm run format` | Prettier, writes files in place.                                                                                                                                       |
 
-### Multi-Layer Security
+`PORT` overrides the default port.
 
-- **Captcha**: Cloudflare Turnstile protection for guestbook entries.
-- **Session Tokens**: Stateless HMAC-signed tokens (10min TTL) with constant-time verification.
-- **Rate Limiting**: Protected `/api` endpoints (50 requests per 15 mins).
-- **Validation**: Zod schemas for strict input sanitization and anti-prototype pollution.
-- **XSS Prevention**: Automatic escaping via `validator.escape()` in both renderer and storage.
+To run the production server locally, run `npm run build` first, then `node --env-file=.env server.js`. `dist/` is gitignored, so on a fresh clone every page answers 404 until the build has run.
 
-## Setup
+Without real credentials, run `node --env-file=.env.test server.js` after the build. It uses Cloudflare's dummy Turnstile keys, so the captcha gate works (the dummy secret still calls Cloudflare `siteverify`, so it needs internet). A guestbook post ends in a 500 because there are no Google credentials. This is enough to run and test the rest of the site.
 
-### Prerequisites
+## Deploy
 
-- Node.js v20+
+A push to `main` deploys automatically to DigitalOcean App Platform, behind Cloudflare. The build command is `npm run build` and the run command is `npm start`.
 
-### Configuration
+## More
 
-Create a `.env` file in the root:
-
-```bash
-TURNSTILE_SITE_KEY=your_site_key
-TURNSTILE_SECRET_KEY=your_secret_key
-SESSION_SECRET_KEY=random_string_for_signing
-GOOGLE_SERVICE_ACCOUNT='{"type": "service_account", ...}'
-GOOGLE_SHEET_ID=your_sheet_id
-GOOGLE_SHEET_NAME=Sheet1
-```
-
-### Commands
-
-- `npm run dev`: Start dev server with JIT rendering and hot reload (localhost:8000).
-- `npm run build`: Generate static production site in `dist/`.
-- `npm start`: Run production server (serves from `dist/`).
+- [architecture](.agent/docs/architecture.md): how pages are rendered and routed.
+- [security](.agent/docs/security.md): the guestbook gate, tokens, validation, rate limits and headers, with their limits.
+- [workflows](.agent/docs/workflows.md): how to add a page, run the tests and add a dependency.
